@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Quickstart · GeoStats.jl</title><meta name="title" content="Quickstart · GeoStats.jl"/><meta property="og:title" content="Quickstart · GeoStats.jl"/><meta property="twitter:title" content="Quickstart · GeoStats.jl"/><meta name="description" content="Documentation for GeoStats.jl."/><meta property="og:description" content="Documentation for GeoStats.jl."/><meta property="twitter:description" content="Documentation for GeoStats.jl."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../"><img src="../assets/logo.svg" alt="GeoStats.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../">GeoStats.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li class="is-active"><a class="tocitem" href>Quickstart</a><ul class="internal"><li><a class="tocitem" href="#Loading/creating-data"><span>Loading/creating data</span></a></li><li><a class="tocitem" href="#Manipulating-data"><span>Manipulating data</span></a></li><li><a class="tocitem" href="#Geostatistical-modeling"><span>Geostatistical modeling</span></a></li><li><a class="tocitem" href="#Scientific-visualization"><span>Scientific visualization</span></a></li></ul></li><li><span class="tocitem">Reference guide</span><ul><li><a class="tocitem" href="../data/">Data</a></li><li><a class="tocitem" href="../domains/">Domains</a></li><li><a class="tocitem" href="../transforms/">Transforms</a></li><li><a class="tocitem" href="../queries/">Queries</a></li><li><a class="tocitem" href="../declustering/">Declustering</a></li><li><input class="collapse-toggle" id="menuitem-3-6" type="checkbox"/><label class="tocitem" for="menuitem-3-6"><span class="docs-label">Variography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../variography/empirical/">Empirical variograms</a></li><li><a class="tocitem" href="../variography/theoretical/">Theoretical variograms</a></li><li><a class="tocitem" href="../variography/fitting/">Fitting variograms</a></li></ul></li><li><a class="tocitem" href="../kriging/">Kriging</a></li><li><input class="collapse-toggle" id="menuitem-3-8" type="checkbox"/><label class="tocitem" for="menuitem-3-8"><span class="docs-label">Random</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../random/points/">Points</a></li><li><a class="tocitem" href="../random/fields/">Fields</a></li></ul></li><li><a class="tocitem" href="../validation/">Validation</a></li><li><a class="tocitem" href="../visualization/">Visualization</a></li></ul></li><li><a class="tocitem" href="../contributing/">Contributing</a></li><li><span class="tocitem">Resources</span><ul><li><a class="tocitem" href="../resources/education/">Education</a></li><li><a class="tocitem" href="../resources/publications/">Publications</a></li><li><a class="tocitem" href="../resources/ecosystem/">Ecosystem</a></li></ul></li><li><span class="tocitem">About</span><ul><li><a class="tocitem" href="../about/community/">Community</a></li><li><a class="tocitem" href="../about/license/">License</a></li><li><a class="tocitem" href="../about/citing/">Citing</a></li></ul></li><li><a class="tocitem" href="../links/">Index</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Quickstart</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Quickstart</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaEarth/GeoStats.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaEarth/GeoStats.jl/blob/master/docs/src/quickstart.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Quickstart"><a class="docs-heading-anchor" href="#Quickstart">Quickstart</a><a id="Quickstart-1"></a><a class="docs-heading-anchor-permalink" href="#Quickstart" title="Permalink"></a></h1><p>A geostatistical workflow often consists of four steps:</p><ol><li>Definition of geospatial data</li><li>Manipulation of geospatial data</li><li>Geostatistical modeling</li><li>Scientific visualization</li></ol><p>In this section, we walk through these steps to illustrate some of the  features of the project. In the case of geostatistical modeling, we will specifically explore <a href="https://www.frontiersin.org/articles/10.3389/fams.2021.689393/full">geostatistical learning</a> models. If you prefer learning from video, check out the recording of our JuliaEO 2023 workshop:</p><p align="center">
+<iframe style="width:560px;height:315px" src="https://www.youtube.com/embed/1FfgjW5XQ9g?start=1682" title="GeoStats.jl workshop at JuliaEO 2023" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p><p>We assume that the following packages are loaded throughout the code examples:</p><pre><code class="language-julia hljs">using GeoStats
+import CairoMakie as Mke</code></pre><p>The <strong>GeoStats.jl</strong> package exports the full stack for geospatial data science and geostatistical modeling. The <strong>CairoMakie.jl</strong> package is one of the possible visualization backends from the <a href="https://docs.makie.org/stable">Makie.jl</a> project.</p><p>If you are new to Julia and have never heard of <strong>Makie.jl</strong> before, here are a few tips to help you choose between the different backends:</p><ul><li><p><strong>WGLMakie.jl</strong> is the preferred backend for interactive visualization on the <em>web browser</em>. It integrates well with <a href="https://plutojl.org">Pluto.jl</a> notebooks and other web-based applications.</p></li><li><p><strong>GLMakie.jl</strong> is the preferred backend for interactive <em>high-performance</em> visualization. It leverages native graphical resources and doesn&#39;t require a web browser to function.</p></li><li><p><strong>CairoMakie.jl</strong> is the preferred backend for <em>publication-quality</em> static visualization. It requires less computing power and is therefore recommended for those users with modest laptops.</p></li></ul><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>We recommend importing the Makie.jl backend as <code>Mke</code> to avoid polluting the Julia session with names from the visualization stack.</p></div></div><h2 id="Loading/creating-data"><a class="docs-heading-anchor" href="#Loading/creating-data">Loading/creating data</a><a id="Loading/creating-data-1"></a><a class="docs-heading-anchor-permalink" href="#Loading/creating-data" title="Permalink"></a></h2><h3 id="Loading-data"><a class="docs-heading-anchor" href="#Loading-data">Loading data</a><a id="Loading-data-1"></a><a class="docs-heading-anchor-permalink" href="#Loading-data" title="Permalink"></a></h3><p>The Julia ecosystem for loading geospatial data is comprised of several low-level packages such as <a href="https://github.com/JuliaGeo/Shapefile.jl">Shapefile.jl</a> and <a href="https://github.com/JuliaGeo/GeoJSON.jl">GeoJSON.jl</a>, which define their own very basic geometry types. Instead of requesting users to learn the so called <a href="https://github.com/JuliaGeo/GeoInterface.jl">GeoInterface.jl</a> to handle these types, we provide the high-level <a href="https://github.com/JuliaEarth/GeoIO.jl">GeoIO.jl</a> package to load any file with geospatial data into well-tested geometries from the <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a> submodule:</p><pre><code class="language-julia hljs">using GeoIO
+
+zone = GeoIO.load(&quot;data/zone.shp&quot;)</code></pre><table>
+  <caption style = "text-align: left;">4×6 GeoTable over 4 GeometrySet</caption>
+  <thead>
+    <tr class = "header">
+      <th style = "text-align: center;">PERIMETER</th>
+      <th style = "text-align: center;">ACRES</th>
+      <th style = "text-align: center;">MACROZONA</th>
+      <th style = "text-align: center;">Hectares</th>
+      <th style = "text-align: center;">area_m2</th>
+      <th style = "text-align: center;">geometry</th>
+    </tr>
+    <tr class = "subheader">
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Categorical</th>
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">MultiPolygon</th>
+    </tr>
+    <tr class = "subheader headerLastRow">
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">🖈 GeodeticLatLon{SAD69}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: center;">5.8508e6</td>
+      <td style = "text-align: center;">3.23145e7</td>
+      <td style = "text-align: center;">Estuario</td>
+      <td style = "text-align: center;">1.30772e7</td>
+      <td style = "text-align: center;">1.30772e11</td>
+      <td style = "text-align: center;">Multi(21×PolyArea)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">9.53947e6</td>
+      <td style = "text-align: center;">2.50594e8</td>
+      <td style = "text-align: center;">Fronteiras Antigas</td>
+      <td style = "text-align: center;">1.01412e8</td>
+      <td style = "text-align: center;">1.01412e12</td>
+      <td style = "text-align: center;">Multi(1×PolyArea)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">1.01743e7</td>
+      <td style = "text-align: center;">2.75528e8</td>
+      <td style = "text-align: center;">Fronteiras Intermediarias</td>
+      <td style = "text-align: center;">1.11502e8</td>
+      <td style = "text-align: center;">1.11502e12</td>
+      <td style = "text-align: center;">Multi(1×PolyArea)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">7.09612e6</td>
+      <td style = "text-align: center;">1.61293e8</td>
+      <td style = "text-align: center;">Fronteiras Novas</td>
+      <td style = "text-align: center;">6.5273e7</td>
+      <td style = "text-align: center;">6.5273e11</td>
+      <td style = "text-align: center;">Multi(2×PolyArea)</td>
+    </tr>
+  </tbody>
+</table>
+<p>Various functions are defined over these geometries, for instance:</p><pre><code class="language-julia hljs">sum(area, zone.geometry)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">2.903786892737099e12 m^2</code></pre><pre><code class="language-julia hljs">sum(perimeter, zone.geometry)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">3.259017661392761e7 m</code></pre><p>Please check the <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a> documentation for more details.</p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>We <strong>highly recommend</strong> using Meshes.jl geometries in geospatial workflows as they were carefully designed to accomodate advanced features of the GeoStats.jl framework. Any other geometry type will likely fail with our geostatistical algorithms and pipelines.</p></div></div><h3 id="Creating-data"><a class="docs-heading-anchor" href="#Creating-data">Creating data</a><a id="Creating-data-1"></a><a class="docs-heading-anchor-permalink" href="#Creating-data" title="Permalink"></a></h3><p>Geospatial data can be derived from other Julia variables. For example, given a Julia array, which is not attached to any coordinate system, we can georeference the array using the <a href="../data/#GeoTables.georef"><code>georef</code></a> function:</p><pre><code class="language-julia hljs">Z = [10sin(i/10) + 2j for i in 1:50, j in 1:50]
+
+Ω = georef((Z=Z,))</code></pre><table>
+  <caption style = "text-align: left;">2500×2 GeoTable over 50×50 CartesianGrid</caption>
+  <thead>
+    <tr class = "header">
+      <th style = "text-align: center;">Z</th>
+      <th style = "text-align: center;">geometry</th>
+    </tr>
+    <tr class = "subheader">
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Quadrangle</th>
+    </tr>
+    <tr class = "subheader headerLastRow">
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">🖈 Cartesian{NoDatum}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: center;">2.99833</td>
+      <td style = "text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">3.98669</td>
+      <td style = "text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">4.9552</td>
+      <td style = "text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">5.89418</td>
+      <td style = "text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">6.79426</td>
+      <td style = "text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">7.64642</td>
+      <td style = "text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">8.44218</td>
+      <td style = "text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">9.17356</td>
+      <td style = "text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">9.83327</td>
+      <td style = "text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">10.4147</td>
+      <td style = "text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">&vellip;</td>
+      <td style = "text-align: right;">&vellip;</td>
+    </tr>
+  </tbody>
+</table>
+<p>Default coordinates are assigned based on the size of the array, and different configurations can be obtained with different methods (see <a href="../data/">Data</a>).</p><p>Geospatial data can be visualized with the <a href="../visualization/#Meshes.viz"><code>viz</code></a> recipe function:</p><pre><code class="language-julia hljs">viz(Ω.geometry, color = Ω.Z)</code></pre><img src="9291104c.png" alt="Example block output"/><p>Alternatively, we provide a basic scientific <a href="../visualization/#GeoTables.viewer"><code>viewer</code></a> to visualize all viewable variables in the data with a colorbar and other interactive elements (see <a href="../visualization/">Visualization</a>):</p><pre><code class="language-julia hljs">viewer(Ω)</code></pre><img src="28a3db01.png" alt="Example block output"/><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>Julia supports unicode symbols with <span>$\LaTeX$</span> syntax. We can type <code>\Omega</code> and press <code>TAB</code> to get the symbol <code>Ω</code> in the example above. This autocompletion works in various text editors, including the <a href="https://code.visualstudio.com/docs/languages/julia">VSCode</a> editor with the Julia extension.</p></div></div><h2 id="Manipulating-data"><a class="docs-heading-anchor" href="#Manipulating-data">Manipulating data</a><a id="Manipulating-data-1"></a><a class="docs-heading-anchor-permalink" href="#Manipulating-data" title="Permalink"></a></h2><h3 id="Table-interface"><a class="docs-heading-anchor" href="#Table-interface">Table interface</a><a id="Table-interface-1"></a><a class="docs-heading-anchor-permalink" href="#Table-interface" title="Permalink"></a></h3><p>Our geospatial data implements the <a href="https://github.com/JuliaData/Tables.jl">Tables.jl</a> interface, which means that they can be accessed as if they were tables with samples in the rows and variables in the columns. In this case, a special column named <code>geometry</code> is created on the fly, row by row, containing <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a> geometries.</p><p>For those familiar with the productive <a href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> interface, there is nothing new:</p><pre><code class="language-julia hljs">Ω[1,:]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">(Z = 2.9983341664682817, geometry = Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m)))</code></pre><pre><code class="language-julia hljs">Ω[1,:geometry]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Quadrangle
+├─ Point(x: 0.0 m, y: 0.0 m)
+├─ Point(x: 1.0 m, y: 0.0 m)
+├─ Point(x: 1.0 m, y: 1.0 m)
+└─ Point(x: 0.0 m, y: 1.0 m)</code></pre><pre><code class="language-julia hljs">Ω.Z</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">2500-element Vector{Float64}:
+  2.9983341664682817
+  3.9866933079506124
+  4.955202066613396
+  5.894183423086505
+  6.79425538604203
+  7.6464247339503535
+  8.44217687237691
+  9.173560908995228
+  9.833269096274833
+ 10.414709848078965
+  ⋮
+ 91.28424227586412
+ 90.83834063250545
+ 90.48397926110484
+ 90.22469882334903
+ 90.06308996366536
+ 90.000767424359
+ 90.0383539116416
+ 90.17547387375667
+ 90.41075725336862</code></pre><p>However, notice that our implementation performs some clever optimizations behind the scenes to avoid expensive creation of geometries:</p><pre><code class="language-julia hljs">Ω.geometry</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">50×50 CartesianGrid
+├─ minimum: Point(x: 0.0 m, y: 0.0 m)
+├─ maximum: Point(x: 50.0 m, y: 50.0 m)
+└─ spacing: (1.0 m, 1.0 m)</code></pre><p>We can always retrieve the table of attributes (or features) with the function <a href="../data/#Base.values"><code>values</code></a> and the underlying geospatial domain with the function <a href="../data/#GeoTables.domain"><code>domain</code></a>. This can be useful for writing algorithms that are <em>type-stable</em> and depend purely on the feature values:</p><pre><code class="language-julia hljs">values(Ω)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">(Z = [2.9983341664682817, 3.9866933079506124, 4.955202066613396, 5.894183423086505, 6.79425538604203, 7.6464247339503535, 8.44217687237691, 9.173560908995228, 9.833269096274833, 10.414709848078965  …  91.8172288893559, 91.28424227586412, 90.83834063250545, 90.48397926110484, 90.22469882334903, 90.06308996366536, 90.000767424359, 90.0383539116416, 90.17547387375667, 90.41075725336862],)</code></pre><p>or on the geometries:</p><pre><code class="language-julia hljs">domain(Ω)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">50×50 CartesianGrid
+├─ minimum: Point(x: 0.0 m, y: 0.0 m)
+├─ maximum: Point(x: 50.0 m, y: 50.0 m)
+└─ spacing: (1.0 m, 1.0 m)</code></pre><h3 id="Geospatial-transforms"><a class="docs-heading-anchor" href="#Geospatial-transforms">Geospatial transforms</a><a id="Geospatial-transforms-1"></a><a class="docs-heading-anchor-permalink" href="#Geospatial-transforms" title="Permalink"></a></h3><p>It is easy to design advanced geospatial pipelines that operate on both the table of features and the underlying geospatial domain:</p><pre><code class="language-julia hljs"># pipeline with table transforms
+pipe = Quantile() → StdCoords()
+
+# feed geospatial data to pipeline
+Ω̂ = pipe(Ω)
+
+# plot distribution before and after pipeline
+fig = Mke.Figure(size = (800, 400))
+Mke.hist(fig[1,1], Ω.Z, color = :gray)
+Mke.hist(fig[2,1], Ω̂.Z, color = :gray)
+fig</code></pre><img src="2d866999.png" alt="Example block output"/><p>Coordinates before pipeline:</p><pre><code class="language-julia hljs">boundingbox(Ω.geometry)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Box
+├─ min: Point(x: 0.0 m, y: 0.0 m)
+└─ max: Point(x: 50.0 m, y: 50.0 m)</code></pre><p>and after pipeline:</p><pre><code class="language-julia hljs">boundingbox(Ω̂.geometry)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Box
+├─ min: Point(x: -0.5 m, y: -0.5 m)
+└─ max: Point(x: 0.5 m, y: 0.5 m)</code></pre><p>These pipelines are revertible meaning that we can transform the data, perform geostatistical modeling, and revert the pipelines to obtain estimates in the original sample space (see <a href="../transforms/">Transforms</a>).</p><h3 id="Geospatial-queries"><a class="docs-heading-anchor" href="#Geospatial-queries">Geospatial queries</a><a id="Geospatial-queries-1"></a><a class="docs-heading-anchor-permalink" href="#Geospatial-queries" title="Permalink"></a></h3><p>We provide three macros <a href="../queries/#GeoTables.@groupby"><code>@groupby</code></a>, <a href="../queries/#GeoTables.@transform"><code>@transform</code></a> and <a href="../queries/#GeoTables.@combine"><code>@combine</code></a> for powerful geospatial split-apply-combine patterns, as well as the function <a href="../queries/#GeoTables.geojoin"><code>geojoin</code></a> for advanced geospatial joins.</p><pre><code class="language-julia hljs">@transform(Ω, :W = 2 * :Z * area(:geometry))</code></pre><table>
+  <caption style = "text-align: left;">2500×3 GeoTable over 50×50 CartesianGrid</caption>
+  <thead>
+    <tr class = "header">
+      <th style = "text-align: center;">Z</th>
+      <th style = "text-align: center;">W</th>
+      <th style = "text-align: center;">geometry</th>
+    </tr>
+    <tr class = "subheader">
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Quadrangle</th>
+    </tr>
+    <tr class = "subheader headerLastRow">
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">[m^2]</th>
+      <th style = "text-align: center;">🖈 Cartesian{NoDatum}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: center;">2.99833</td>
+      <td style = "text-align: center;">5.99667 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">3.98669</td>
+      <td style = "text-align: center;">7.97339 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">4.9552</td>
+      <td style = "text-align: center;">9.9104 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">5.89418</td>
+      <td style = "text-align: center;">11.7884 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">6.79426</td>
+      <td style = "text-align: center;">13.5885 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">7.64642</td>
+      <td style = "text-align: center;">15.2928 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">8.44218</td>
+      <td style = "text-align: center;">16.8844 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">9.17356</td>
+      <td style = "text-align: center;">18.3471 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">9.83327</td>
+      <td style = "text-align: center;">19.6665 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">10.4147</td>
+      <td style = "text-align: center;">20.8294 m^2</td>
+      <td style = "text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">&vellip;</td>
+      <td style = "text-align: right;">&vellip;</td>
+      <td style = "text-align: right;">&vellip;</td>
+    </tr>
+  </tbody>
+</table>
+<p>These are very useful for geospatial data science as they hide the complexity of the <code>geometry</code> column. For more information, check the <a href="../queries/">Queries</a> section of the documentation.</p><h2 id="Geostatistical-modeling"><a class="docs-heading-anchor" href="#Geostatistical-modeling">Geostatistical modeling</a><a id="Geostatistical-modeling-1"></a><a class="docs-heading-anchor-permalink" href="#Geostatistical-modeling" title="Permalink"></a></h2><p>Having defined the geospatial data objects, we proceed and define the geostatistical learning model. Let&#39;s assume that we have geopatial data  with some variable that we want to predict in a supervised learning setting.  We load the data from a CSV file, and inspect the available columns:</p><pre><code class="language-julia hljs">using CSV
+using DataFrames
+
+table = CSV.File(&quot;data/agriculture.csv&quot;) |&gt; DataFrame
+
+first(table, 5)</code></pre><div><div style = "float: left;"><span>5×8 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">band1</th><th style = "text-align: left;">band2</th><th style = "text-align: left;">band3</th><th style = "text-align: left;">band4</th><th style = "text-align: left;">crop</th><th style = "text-align: left;">polygon</th><th style = "text-align: left;">x</th><th style = "text-align: left;">y</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">121</td><td style = "text-align: right;">91</td><td style = "text-align: right;">70</td><td style = "text-align: right;">384</td><td style = "text-align: right;">1</td><td style = "text-align: right;">222.0</td><td style = "text-align: right;">746.0</td><td style = "text-align: right;">717.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: right;">112</td><td style = "text-align: right;">82</td><td style = "text-align: right;">58</td><td style = "text-align: right;">336</td><td style = "text-align: right;">2</td><td style = "text-align: right;">264.0</td><td style = "text-align: right;">953.0</td><td style = "text-align: right;">291.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: right;">120</td><td style = "text-align: right;">86</td><td style = "text-align: right;">55</td><td style = "text-align: right;">389</td><td style = "text-align: right;">1</td><td style = "text-align: right;">363.0</td><td style = "text-align: right;">1050.0</td><td style = "text-align: right;">796.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">4</td><td style = "text-align: right;">125</td><td style = "text-align: right;">92</td><td style = "text-align: right;">78</td><td style = "text-align: right;">255</td><td style = "text-align: right;">2</td><td style = "text-align: right;">295.0</td><td style = "text-align: right;">787.0</td><td style = "text-align: right;">921.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">5</td><td style = "text-align: right;">117</td><td style = "text-align: right;">77</td><td style = "text-align: right;">59</td><td style = "text-align: right;">308</td><td style = "text-align: right;">1</td><td style = "text-align: right;">347.0</td><td style = "text-align: right;">947.0</td><td style = "text-align: right;">758.0</td></tr></tbody></table></div><p>Columns <code>band1</code>, <code>band2</code>, ..., <code>band4</code> represent four satellite bands for different locations <code>(x, y)</code> in this region. The column <code>crop</code> has the crop type for each location that was labeled manually with the purpose of fitting a learning model.</p><p>We can now georeference the table and plot some of the variables:</p><pre><code class="language-julia hljs">Ω = georef(table, (:x, :y))
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], Ω.geometry, color = Ω.band4)
+viz(fig[1,2], Ω.geometry, color = Ω.crop)
+fig</code></pre><img src="b20e7da9.png" alt="Example block output"/><p>Similar to a generic statistical learning workflow, we split the data into &quot;train&quot; and &quot;test&quot; sets. The main difference here is that our geospatial <code>geosplit</code> function accepts a separating plane specified by its normal direction <code>(1,-1)</code>:</p><pre><code class="language-julia hljs">Ωs, Ωt = geosplit(Ω, 0.2, (1.0, -1.0))
+
+viz(Ωs.geometry)
+viz!(Ωt.geometry, color = :gray90)
+Mke.current_figure()</code></pre><img src="e6bf3866.png" alt="Example block output"/><p>We can visualize the domain of the &quot;train&quot; (or source) set Ωs in blue, and the domain of the &quot;test&quot; (or target) set Ωt in gray. We reserved 20% of the samples to Ωs and 80% to Ωt. Internally, this geospatial <code>geosplit</code> function is implemented in terms of efficient geospatial partitions.</p><p>Let&#39;s define our geostatistical learning model to predict the crop type based on the four satellite bands. We will use the <code>DecisionTreeClassifier</code>  model, which is suitable for the task we want to perform. Any model from the <a href="https://github.com/JuliaML/StatsLearnModels.jl">StatsLeanModels.jl</a>  model is supported, including all models from <a href="https://github.com/cstjean/ScikitLearn.jl">ScikitLearn.jl</a>:</p><pre><code class="language-julia hljs">feats = [:band1, :band2, :band3, :band4]
+label = :crop
+
+model = DecisionTreeClassifier()</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">DecisionTreeClassifier
+max_depth:                -1
+min_samples_leaf:         1
+min_samples_split:        2
+min_purity_increase:      0.0
+pruning_purity_threshold: 1.0
+n_subfeatures:            0
+classes:                  nothing
+root:                     nothing</code></pre><p>We will fit the model in Ωs where the features and labels are available  and predict in Ωt where the features are available. The <code>Learn</code> transform automatically fits the model to the data:</p><pre><code class="language-julia hljs">learn = Learn(Ωs, model, feats =&gt; label)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Learn transform
+├─ model: FittedModel{DecisionTreeClassifier}
+└─ input: [:band1, :band2, :band3, :band4]</code></pre><p>The transform can be called with new data to generate predictions:</p><pre><code class="language-julia hljs">Ω̂t = learn(Ωt)</code></pre><table>
+  <caption style = "text-align: left;">60039×2 GeoTable over 60039 view(::PointSet, [1, 2, 3, 4, ..., 74997, 74998, 74999, 75000])</caption>
+  <thead>
+    <tr class = "header">
+      <th style = "text-align: center;">crop</th>
+      <th style = "text-align: center;">geometry</th>
+    </tr>
+    <tr class = "subheader">
+      <th style = "text-align: center;">Categorical</th>
+      <th style = "text-align: center;">Point</th>
+    </tr>
+    <tr class = "subheader headerLastRow">
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">🖈 Cartesian{NoDatum}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: center;">1</td>
+      <td style = "text-align: center;">(x: 746.0 m, y: 717.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">2</td>
+      <td style = "text-align: center;">(x: 953.0 m, y: 291.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">2</td>
+      <td style = "text-align: center;">(x: 1050.0 m, y: 796.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">2</td>
+      <td style = "text-align: center;">(x: 787.0 m, y: 921.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">2</td>
+      <td style = "text-align: center;">(x: 947.0 m, y: 758.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">2</td>
+      <td style = "text-align: center;">(x: 949.0 m, y: 769.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">2</td>
+      <td style = "text-align: center;">(x: 773.0 m, y: 899.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">2</td>
+      <td style = "text-align: center;">(x: 851.0 m, y: 895.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">3</td>
+      <td style = "text-align: center;">(x: 1018.0 m, y: 748.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">1</td>
+      <td style = "text-align: center;">(x: 427.0 m, y: 743.0 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">&vellip;</td>
+      <td style = "text-align: right;">&vellip;</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Scientific-visualization"><a class="docs-heading-anchor" href="#Scientific-visualization">Scientific visualization</a><a id="Scientific-visualization-1"></a><a class="docs-heading-anchor-permalink" href="#Scientific-visualization" title="Permalink"></a></h2><p>We note that the prediction of a geostatistical learning model is a geospatial data object, and we can inspect it with the same methods already described above. This also means that we can visualize the prediction directly, side by side with the true label in this synthetic example:</p><pre><code class="language-julia hljs">fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], Ω̂t.geometry, color = Ω̂t.crop)
+viz(fig[1,2], Ωt.geometry, color = Ωt.crop)
+fig</code></pre><img src="c1384683.png" alt="Example block output"/><p>With this example we conclude the basic workflow. To get familiar with other features of the project, please check the the reference guide.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../data/">Data »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.6.0 on <span class="colophon-date" title="Wednesday 21 August 2024 15:06">Wednesday 21 August 2024</span>. Using Julia version 1.10.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
