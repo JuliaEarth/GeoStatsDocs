@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Fields · GeoStats.jl</title><meta name="title" content="Fields · GeoStats.jl"/><meta property="og:title" content="Fields · GeoStats.jl"/><meta property="twitter:title" content="Fields · GeoStats.jl"/><meta name="description" content="Documentation for GeoStats.jl."/><meta property="og:description" content="Documentation for GeoStats.jl."/><meta property="twitter:description" content="Documentation for GeoStats.jl."/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="GeoStats.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">GeoStats.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../quickstart/">Quickstart</a></li><li><span class="tocitem">Reference guide</span><ul><li><a class="tocitem" href="../../data/">Data</a></li><li><a class="tocitem" href="../../domains/">Domains</a></li><li><a class="tocitem" href="../../transforms/">Transforms</a></li><li><a class="tocitem" href="../../queries/">Queries</a></li><li><a class="tocitem" href="../../declustering/">Declustering</a></li><li><input class="collapse-toggle" id="menuitem-3-6" type="checkbox"/><label class="tocitem" for="menuitem-3-6"><span class="docs-label">Variography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../variography/empirical/">Empirical variograms</a></li><li><a class="tocitem" href="../../variography/theoretical/">Theoretical variograms</a></li><li><a class="tocitem" href="../../variography/fitting/">Fitting variograms</a></li></ul></li><li><a class="tocitem" href="../../kriging/">Kriging</a></li><li><input class="collapse-toggle" id="menuitem-3-8" type="checkbox" checked/><label class="tocitem" for="menuitem-3-8"><span class="docs-label">Random</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../points/">Points</a></li><li class="is-active"><a class="tocitem" href>Fields</a><ul class="internal"><li><a class="tocitem" href="#Builtin"><span>Builtin</span></a></li><li><a class="tocitem" href="#External"><span>External</span></a></li></ul></li></ul></li><li><a class="tocitem" href="../../validation/">Validation</a></li><li><a class="tocitem" href="../../visualization/">Visualization</a></li></ul></li><li><a class="tocitem" href="../../contributing/">Contributing</a></li><li><span class="tocitem">Resources</span><ul><li><a class="tocitem" href="../../resources/education/">Education</a></li><li><a class="tocitem" href="../../resources/publications/">Publications</a></li><li><a class="tocitem" href="../../resources/ecosystem/">Ecosystem</a></li></ul></li><li><span class="tocitem">About</span><ul><li><a class="tocitem" href="../../about/community/">Community</a></li><li><a class="tocitem" href="../../about/license/">License</a></li><li><a class="tocitem" href="../../about/citing/">Citing</a></li></ul></li><li><a class="tocitem" href="../../links/">Index</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Reference guide</a></li><li><a class="is-disabled">Random</a></li><li class="is-active"><a href>Fields</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Fields</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaEarth/GeoStats.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaEarth/GeoStats.jl/blob/master/docs/src/random/fields.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Fields"><a class="docs-heading-anchor" href="#Fields">Fields</a><a id="Fields-1"></a><a class="docs-heading-anchor-permalink" href="#Fields" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.rand-Tuple{GeoStatsProcesses.FieldProcess, Domain, Any, Any}" href="#Base.rand-Tuple{GeoStatsProcesses.FieldProcess, Domain, Any, Any}"><code>Base.rand</code></a> — <span class="docstring-category">Method</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">rand([rng], process::FieldProcess, domain, data, [nreals], [method]; [parameters])</code></pre><p>Generate one or <code>nreals</code> realizations of the field <code>process</code> with <code>method</code> over the <code>domain</code> with <code>data</code> and optional <code>paramaters</code>. Optionally, specify the random number generator <code>rng</code> and global <code>parameters</code>.</p><p>The <code>data</code> can be a geotable, a pair, or an iterable of pairs of the form <code>var =&gt; T</code>, where <code>var</code> is a symbol or string with the variable name and <code>T</code> is the corresponding data type.</p><p><strong>Parameters</strong></p><ul><li><code>pool</code>    - Pool of worker processes (default to <code>[myid()]</code>)</li><li><code>threads</code> - Number of threads (default to <code>cpucores()</code>)</li><li><code>verbose</code> - Show progress and other information (default to <code>true</code>)</li></ul><p><strong>Examples</strong></p><pre><code class="language-julia hljs">julia&gt; rand(process, domain, geotable, 3)
+julia&gt; rand(process, domain, :z =&gt; Float64)
+julia&gt; rand(process, domain, &quot;z&quot; =&gt; Float64)
+julia&gt; rand(process, domain, [:a =&gt; Float64, :b =&gt; Float64])
+julia&gt; rand(process, domain, [&quot;a&quot; =&gt; Float64, &quot;b&quot; =&gt; Float64])</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/processes.jl#L88-L114">source</a></section></article><p>Realizations are stored in an <a href="#GeoStatsBase.Ensemble"><code>Ensemble</code></a> as illustrated in the following example:</p><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsBase.Ensemble" href="#GeoStatsBase.Ensemble"><code>GeoStatsBase.Ensemble</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Ensemble</code></pre><p>An ensemble of geostatistical realizations from a geostatistical process.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsBase.jl/blob/v0.45.5/src/ensembles.jl#L5-L9">source</a></section></article><pre><code class="language-julia hljs"># domain of interest
+grid = CartesianGrid(100, 100)
+
+# Gaussian process
+proc = GaussianProcess(GaussianVariogram(range=30.0))
+
+# unconditional simulation
+real = rand(proc, grid, [:Z =&gt; Float64], 100)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">2D Ensemble
+  domain:    100×100 CartesianGrid
+  variables: Z (Float64)
+  N° reals:  100</code></pre><p>We can visualize the first two realizations:</p><pre><code class="language-julia hljs">fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].Z)
+viz(fig[1,2], real[2].geometry, color = real[2].Z)
+fig</code></pre><img src="1971fdd7.png" alt="Example block output"/><p>the mean and variance:</p><pre><code class="language-julia hljs">m, v = mean(real), var(real)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], m.geometry, color = m.Z)
+viz(fig[1,2], v.geometry, color = v.Z)
+fig</code></pre><img src="71fe7633.png" alt="Example block output"/><p>or the 25th and 75th percentiles:</p><pre><code class="language-julia hljs">q25 = quantile(real, 0.25)
+q75 = quantile(real, 0.75)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], q25.geometry, color = q25.Z)
+viz(fig[1,2], q75.geometry, color = q75.Z)
+fig</code></pre><img src="139564a5.png" alt="Example block output"/><p>All field processes can generate realizations in parallel using multiple Julia processes. Doing so requires using the <a href="https://docs.julialang.org/en/v1/stdlib/Distributed/">Distributed</a> standard library, like in the following example:</p><pre><code class="language-julia hljs">using Distributed
+
+# request additional processes
+addprocs(3)
+
+# load code on every single process
+@everywhere using GeoStats
+
+# ------------
+# main script
+# ------------
+
+# domain of interest
+grid = CartesianGrid(100, 100)
+
+# Gaussian process
+proc = GaussianProcess(GaussianVariogram(range=30.0))
+
+# generate three realizations with three processes
+real = rand(proc, grid, [:Z =&gt; Float64], 3, pool = workers())</code></pre><p>Please consult <a href="https://github.com/Arpeggeo/julia-distributed-computing/tree/master">The ultimate guide to distributed computing in Julia</a>.</p><h2 id="Builtin"><a class="docs-heading-anchor" href="#Builtin">Builtin</a><a id="Builtin-1"></a><a class="docs-heading-anchor-permalink" href="#Builtin" title="Permalink"></a></h2><p>The following processes are shipped with the framework.</p><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.GaussianProcess" href="#GeoStatsProcesses.GaussianProcess"><code>GeoStatsProcesses.GaussianProcess</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">GaussianProcess(variogram=GaussianVariogram(), mean=0.0)</code></pre><p>Gaussian process with given theoretical <code>variogram</code> and global <code>mean</code>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/gaussian.jl#L5-L9">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.LUMethod" href="#GeoStatsProcesses.LUMethod"><code>GeoStatsProcesses.LUMethod</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">LUMethod(; [paramaters])</code></pre><p>The LU Gaussian process method introduced by Alabert 1987. The full covariance matrix is built to include all locations of the process domain, and samples from the multivariate Gaussian are drawn via LU factorization.</p><p><strong>Parameters</strong></p><ul><li><code>factorization</code> - Factorization method (default to <code>cholesky</code>)</li><li><code>correlation</code>   - Correlation coefficient between two covariates (default to <code>0</code>)</li><li><code>init</code>          - Data initialization method (default to <code>NearestInit()</code>)</li></ul><p><strong>References</strong></p><ul><li><p>Alabert 1987. <a href="https://link.springer.com/article/10.1007/BF00897191">The practice of fast conditional simulations through the LU decomposition of the covariance matrix</a></p></li><li><p>Oliver 2003. <a href="https://link.springer.com/article/10.1023%2FB%3AMATG.0000002984.56637.ef">Gaussian cosimulation: modeling of the cross-covariance</a></p></li></ul><p><strong>Notes</strong></p><ul><li><p>The method is only adequate for domains with relatively small number of elements (e.g. 100x100 grids) where it is feasible to factorize the full covariance.</p></li><li><p>For larger domains (e.g. 3D grids), other methods are preferred such as <a href="#GeoStatsProcesses.SEQMethod"><code>SEQMethod</code></a> and <a href="#GeoStatsProcesses.FFTMethod"><code>FFTMethod</code></a>.</p></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/gaussian/lu.jl#L5-L36">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.FFTMethod" href="#GeoStatsProcesses.FFTMethod"><code>GeoStatsProcesses.FFTMethod</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">FFTMethod(; [paramaters])</code></pre><p>The FFT Gaussian process method introduced by Gutjahr 1997. The covariance function is perturbed in the frequency domain after a fast Fourier transform. White noise is added to the phase of the spectrum, and a realization is produced by an inverse Fourier transform.</p><p><strong>Parameters</strong></p><ul><li><code>minneighbors</code> - Minimum number of neighbors (default to <code>1</code>)</li><li><code>maxneighbors</code> - Maximum number of neighbors (default to <code>10</code>)</li><li><code>neighborhood</code> - Search neighborhood (default to <code>nothing</code>)</li><li><code>distance</code>     - Distance used to find nearest neighbors (default to <code>Euclidean()</code>)</li></ul><p><strong>References</strong></p><ul><li><p>Gutjahr 1997. <a href="https://link.springer.com/article/10.1007/BF02769641">General joint conditional simulations using a fast Fourier transform method</a></p></li><li><p>Gómez-Hernández, J. &amp; Srivastava, R. 2021. <a href="https://link.springer.com/article/10.1007/s11004-021-09926-0">One Step at a Time: The Origins of Sequential Simulation and Beyond</a></p></li></ul><p><strong>Notes</strong></p><ul><li><p>The method is limited to simulations on Cartesian grids, and care must be taken to make sure that the correlation length is small enough compared to the grid size.</p></li><li><p>As a general rule of thumb, avoid correlation lengths greater than 1/3 of the grid.</p></li><li><p>The method is extremely fast, and can be used to generate large 3D realizations.</p></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/gaussian/fft.jl#L5-L38">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.SEQMethod" href="#GeoStatsProcesses.SEQMethod"><code>GeoStatsProcesses.SEQMethod</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">SEQMethod(; [paramaters])</code></pre><p>The sequential process method introduced by Gomez-Hernandez 1993. It traverses all locations of the geospatial domain according to a path, approximates the conditional Gaussian distribution within a neighborhood using simple Kriging, and assigns a value to the center of the neighborhood by sampling from this distribution.</p><p><strong>Parameters</strong></p><ul><li><code>path</code>         - Process path (default to <code>LinearPath()</code>)</li><li><code>minneighbors</code> - Minimum number of neighbors (default to <code>1</code>)</li><li><code>maxneighbors</code> - Maximum number of neighbors (default to <code>36</code>)</li><li><code>neighborhood</code> - Search neighborhood (default to <code>:range</code>)</li><li><code>distance</code>     - Distance used to find nearest neighbors (default to <code>Euclidean()</code>)</li><li><code>init</code>         - Data initialization method (default to <code>NearestInit()</code>)</li></ul><p>For each location in the process <code>path</code>, a maximum number of neighbors <code>maxneighbors</code> is used to fit the conditional Gaussian distribution. The neighbors are searched according to a <code>neighborhood</code>.</p><p>The <code>neighborhood</code> can be a <code>MetricBall</code>, the symbol <code>:range</code> or <code>nothing</code>. The symbol <code>:range</code> is converted to <code>MetricBall(range(γ))</code> where <code>γ</code> is the variogram of the Gaussian process. If <code>neighborhood</code> is <code>nothing</code>, the nearest neighbors are used without additional constraints.</p><p><strong>References</strong></p><ul><li>Gomez-Hernandez &amp; Journel 1993. <a href="https://link.springer.com/chapter/10.1007/978-94-011-1739-5_8">Joint Sequential Simulation of MultiGaussian Fields</a></li></ul><p><strong>Notes</strong></p><ul><li>This method is very sensitive to the various parameters. Care must be taken to make sure that enough neighbors are used in the underlying Kriging model.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/gaussian/seq.jl#L5-L42">source</a></section></article><pre><code class="language-julia hljs"># domain of interest
+grid = CartesianGrid(100, 100)
+
+# Gaussian process
+proc = GaussianProcess(GaussianVariogram(range=30.0))
+
+# unconditional simulation
+real = rand(proc, grid, [:Z =&gt; Float64], 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].Z)
+viz(fig[1,2], real[2].geometry, color = real[2].Z)
+fig</code></pre><img src="3424f472.png" alt="Example block output"/><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.LindgrenProcess" href="#GeoStatsProcesses.LindgrenProcess"><code>GeoStatsProcesses.LindgrenProcess</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">LindgrenProcess(range=1.0, sill=1.0; init=NearestInit())</code></pre><p>Lindgren process with given <code>range</code> (correlation length) and <code>sill</code> (total variance) as described in Lindgren 2011. Optionally, specify the data initialization method <code>init</code>.</p><p>The process relies relies on a discretization of the Laplace-Beltrami  operator on meshes and is adequate for highly curved domains (e.g. surfaces).</p><p><strong>References</strong></p><ul><li>Lindgren et al. 2011. <a href="https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2011.00777.x">An explicit link between Gaussian fields and Gaussian Markov random fields: the stochastic partial differential equation approach</a></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/lindgren.jl#L5-L20">source</a></section></article><h2 id="External"><a class="docs-heading-anchor" href="#External">External</a><a id="External-1"></a><a class="docs-heading-anchor-permalink" href="#External" title="Permalink"></a></h2><p>The following processes are available in external packages.</p><h3 id="ImageQuilting.jl"><a class="docs-heading-anchor" href="#ImageQuilting.jl">ImageQuilting.jl</a><a id="ImageQuilting.jl-1"></a><a class="docs-heading-anchor-permalink" href="#ImageQuilting.jl" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.QuiltingProcess" href="#GeoStatsProcesses.QuiltingProcess"><code>GeoStatsProcesses.QuiltingProcess</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">QuiltingProcess(trainimg, tilesize; [paramaters])</code></pre><p>Image quilting process with training image <code>trainimg</code> and tile size <code>tilesize</code> as described in Hoffimann et al. 2017.</p><p><strong>Parameters</strong></p><ul><li><code>overlap</code>  - Overlap size (default to (1/6, 1/6, ..., 1/6))</li><li><code>path</code>     - Process path (<code>:raster</code> (default), <code>:dilation</code>, or <code>:random</code>)</li><li><code>inactive</code> - Vector of inactive voxels (i.e. <code>CartesianIndex</code>) in the grid</li><li><code>soft</code>     - A pair <code>(data,dataTI)</code> of geospatial data objects (default to <code>nothing</code>)</li><li><code>tol</code>      - Initial relaxation tolerance in (0,1] (default to <code>0.1</code>)</li><li><code>init</code>     - Data initialization method (default to <code>NearestInit()</code>)</li></ul><p><strong>References</strong></p><ul><li><p>Hoffimann et al 2017. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0098300417301139">Stochastic simulation by image quilting of process-based geological models</a></p></li><li><p>Hoffimann et al 2015. <a href="https://www.researchgate.net/publication/295902985_Geostatistical_Modeling_of_Evolving_Landscapes_by_Means_of_Image_Quilting">Geostatistical modeling of evolving landscapes by means of image quilting</a></p></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/quilting.jl#L5-L27">source</a></section></article><pre><code class="language-julia hljs">using ImageQuilting
+using GeoStatsImages
+
+# domain of interest
+grid = CartesianGrid(200, 200)
+
+# quilting process
+img  = geostatsimage(&quot;Strebelle&quot;)
+proc = QuiltingProcess(img, (62, 62))
+
+# unconditional simulation
+real = rand(proc, grid, [:facies =&gt; Int], 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].facies)
+viz(fig[1,2], real[2].geometry, color = real[2].facies)
+fig</code></pre><img src="8d39dd4e.png" alt="Example block output"/><pre><code class="language-julia hljs"># domain of interest
+grid = CartesianGrid(200, 200)
+
+# quilting process
+img  = geostatsimage(&quot;StoneWall&quot;)
+proc = QuiltingProcess(img, (13, 13))
+
+# unconditional simulation
+real = rand(proc, grid, [:Z =&gt; Int], 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].Z)
+viz(fig[1,2], real[2].geometry, color = real[2].Z)
+fig</code></pre><img src="e05783ec.png" alt="Example block output"/><pre><code class="language-julia hljs"># domain of interest
+grid = domain(img)
+
+# pre-existing observations
+img  = geostatsimage(&quot;Strebelle&quot;)
+data = img |&gt; Sample(20, replace=false)
+
+# quilting process
+proc = QuiltingProcess(img, (30, 30))
+
+# conditional simulation
+real = rand(proc, grid, data, 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].facies)
+viz(fig[1,2], real[2].geometry, color = real[2].facies)
+fig</code></pre><img src="1182338b.png" alt="Example block output"/><p>Voxels marked with the special symbol <code>NaN</code> are treated as inactive. The algorithm will skip tiles that only contain inactive voxels to  save computation and will generate realizations that are consistent with the mask. This is particularly useful with complex 3D models that  have large inactive portions.</p><pre><code class="language-julia hljs"># domain of interest
+grid = domain(img)
+
+# skip circle at the center
+nx, ny = size(grid)
+r = 100; circle = []
+for i in 1:nx, j in 1:ny
+  if (i-nx÷2)^2 + (j-ny÷2)^2 &lt; r^2
+    push!(circle, CartesianIndex(i, j))
+  end
+end
+
+# quilting process
+proc = QuiltingProcess(img, (62, 62), inactive = circle)
+
+# unconditional simulation
+real = rand(proc, grid, [:facies =&gt; Float64], 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].facies)
+viz(fig[1,2], real[2].geometry, color = real[2].facies)
+fig</code></pre><img src="9de8b528.png" alt="Example block output"/><p>It is possible to incorporate auxiliary variables to guide the  selection of patterns from the training image.</p><pre><code class="language-julia hljs">using ImageFiltering
+
+# image assumed as ground truth (unknown)
+truth = geostatsimage(&quot;WalkerLakeTruth&quot;)
+
+# training image with similar patterns
+img = geostatsimage(&quot;WalkerLake&quot;)
+
+# forward model (blur filter)
+function forward(data)
+  img = asarray(data, :Z)
+  krn = KernelFactors.IIRGaussian([10,10])
+  fwd = imfilter(img, krn)
+  georef((; fwd=vec(fwd)), domain(data))
+end
+
+# apply forward model to both images
+data   = forward(truth)
+dataTI = forward(img)
+
+proc = QuiltingProcess(img, (27, 27), soft=(data, dataTI))
+
+real = rand(proc, domain(truth), [:Z =&gt; Float64], 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].Z)
+viz(fig[1,2], real[2].geometry, color = real[2].Z)
+fig</code></pre><img src="fba28fe4.png" alt="Example block output"/><h3 id="TuringPatterns.jl"><a class="docs-heading-anchor" href="#TuringPatterns.jl">TuringPatterns.jl</a><a id="TuringPatterns.jl-1"></a><a class="docs-heading-anchor-permalink" href="#TuringPatterns.jl" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.TuringProcess" href="#GeoStatsProcesses.TuringProcess"><code>GeoStatsProcesses.TuringProcess</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">TuringProcess(; [paramaters])</code></pre><p>Turing process as described in Turing 1952.</p><p><strong>Parameters</strong></p><ul><li><code>params</code> - basic parameters (default to <code>nothing</code>)</li><li><code>blur</code>   - blur algorithm (default to <code>nothing</code>)</li><li><code>edge</code>   - edge condition (default to <code>nothing</code>)</li><li><code>iter</code>   - number of iterations (default to <code>100</code>)</li></ul><p><strong>References</strong></p><ul><li>Turing 1952. <a href="https://royalsocietypublishing.org/doi/10.1098/rstb.1952.0012">The chemical basis of morphogenesis</a></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/turing.jl#L5-L20">source</a></section></article><pre><code class="language-julia hljs">using TuringPatterns
+
+# domain of interest
+grid = CartesianGrid(200, 200)
+
+# unconditional simulation
+real = rand(TuringProcess(), grid, [:z =&gt; Float64], 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].z)
+viz(fig[1,2], real[2].geometry, color = real[2].z)
+fig</code></pre><img src="4662ed87.png" alt="Example block output"/><h3 id="StratiGraphics.jl"><a class="docs-heading-anchor" href="#StratiGraphics.jl">StratiGraphics.jl</a><a id="StratiGraphics.jl-1"></a><a class="docs-heading-anchor-permalink" href="#StratiGraphics.jl" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsProcesses.StrataProcess" href="#GeoStatsProcesses.StrataProcess"><code>GeoStatsProcesses.StrataProcess</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">StrataProcess(environment; [paramaters])</code></pre><p>Strata process with given geological <code>environment</code> as described in Hoffimann 2018.</p><p><strong>Parameters</strong></p><ul><li><code>state</code>       - Initial geological state</li><li><code>stack</code>       - Stacking scheme (:erosional or :depositional)</li><li><code>nepochs</code>     - Number of epochs (default to 10)</li></ul><p><strong>References</strong></p><ul><li>Hoffimann 2018. <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019JF005245">Morphodynamic analysis and statistical synthesis of geormorphic data</a></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsProcesses.jl/blob/v0.6.14/src/field/strata.jl#L5-L21">source</a></section></article><pre><code class="language-julia hljs">using StratiGraphics
+
+# domain of interest
+grid = CartesianGrid(50, 50, 20)
+
+# stratigraphic environment
+p = SmoothingProcess()
+T = [0.5 0.5; 0.5 0.5]
+Δ = ExponentialDuration(1.0)
+ℰ = Environment([p, p], T, Δ)
+
+# strata simulation
+real = rand(StrataProcess(ℰ), grid, [:z =&gt; Float64], 2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], real[1].geometry, color = real[1].z)
+viz(fig[1,2], real[2].geometry, color = real[2].z)
+fig</code></pre><img src="189114f6.png" alt="Example block output"/></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../points/">« Points</a><a class="docs-footer-nextpage" href="../../validation/">Validation »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.6.0 on <span class="colophon-date" title="Wednesday 28 August 2024 21:54">Wednesday 28 August 2024</span>. Using Julia version 1.10.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
