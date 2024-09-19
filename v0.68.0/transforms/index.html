@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Transforms · GeoStats.jl</title><meta name="title" content="Transforms · GeoStats.jl"/><meta property="og:title" content="Transforms · GeoStats.jl"/><meta property="twitter:title" content="Transforms · GeoStats.jl"/><meta name="description" content="Documentation for GeoStats.jl."/><meta property="og:description" content="Documentation for GeoStats.jl."/><meta property="twitter:description" content="Documentation for GeoStats.jl."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../"><img src="../assets/logo.svg" alt="GeoStats.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../">GeoStats.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li><a class="tocitem" href="../quickstart/">Quickstart</a></li><li><span class="tocitem">Reference guide</span><ul><li><a class="tocitem" href="../data/">Data</a></li><li><a class="tocitem" href="../domains/">Domains</a></li><li class="is-active"><a class="tocitem" href>Transforms</a><ul class="internal"><li><a class="tocitem" href="#Feature-transforms"><span>Feature transforms</span></a></li><li><a class="tocitem" href="#Geometric-transforms"><span>Geometric transforms</span></a></li><li><a class="tocitem" href="#Geostatistical-transforms"><span>Geostatistical transforms</span></a></li></ul></li><li><a class="tocitem" href="../queries/">Queries</a></li><li><a class="tocitem" href="../declustering/">Declustering</a></li><li><input class="collapse-toggle" id="menuitem-3-6" type="checkbox"/><label class="tocitem" for="menuitem-3-6"><span class="docs-label">Variography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../variography/empirical/">Empirical variograms</a></li><li><a class="tocitem" href="../variography/theoretical/">Theoretical variograms</a></li><li><a class="tocitem" href="../variography/fitting/">Fitting variograms</a></li></ul></li><li><a class="tocitem" href="../kriging/">Kriging</a></li><li><input class="collapse-toggle" id="menuitem-3-8" type="checkbox"/><label class="tocitem" for="menuitem-3-8"><span class="docs-label">Random</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../random/points/">Points</a></li><li><a class="tocitem" href="../random/fields/">Fields</a></li></ul></li><li><a class="tocitem" href="../validation/">Validation</a></li><li><a class="tocitem" href="../visualization/">Visualization</a></li></ul></li><li><a class="tocitem" href="../contributing/">Contributing</a></li><li><span class="tocitem">Resources</span><ul><li><a class="tocitem" href="../resources/education/">Education</a></li><li><a class="tocitem" href="../resources/publications/">Publications</a></li><li><a class="tocitem" href="../resources/ecosystem/">Ecosystem</a></li></ul></li><li><span class="tocitem">About</span><ul><li><a class="tocitem" href="../about/community/">Community</a></li><li><a class="tocitem" href="../about/license/">License</a></li><li><a class="tocitem" href="../about/citing/">Citing</a></li></ul></li><li><a class="tocitem" href="../links/">Index</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Reference guide</a></li><li class="is-active"><a href>Transforms</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Transforms</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaEarth/GeoStats.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaEarth/GeoStats.jl/blob/master/docs/src/transforms.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Geospatial-transforms"><a class="docs-heading-anchor" href="#Geospatial-transforms">Geospatial transforms</a><a id="Geospatial-transforms-1"></a><a class="docs-heading-anchor-permalink" href="#Geospatial-transforms" title="Permalink"></a></h1><p>We provide a very powerful list of transforms that were designed to work seamlessly with geospatial data. These transforms are implemented in different packages depending on how they interact with geometries.</p><p>The list of supported transforms is continuously growing. The following code can be used to print an updated list in any project environment:</p><pre><code class="language-julia hljs"># packages to print type tree
+using InteractiveUtils
+using AbstractTrees
+using TransformsBase
+
+# packages with transforms
+using GeoStats
+
+# define the tree of types
+AbstractTrees.children(T::Type) = subtypes(T)
+
+# print all currently available transforms
+AbstractTrees.print_tree(TransformsBase.Transform)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Transform
+├─ GeometricTransform
+│  ├─ Bridge
+│  ├─ CoordinateTransform
+│  │  ├─ Affine
+│  │  ├─ Reinterpret
+│  │  ├─ LengthUnit
+│  │  ├─ Proj
+│  │  ├─ Rotate
+│  │  ├─ Scale
+│  │  ├─ Stretch
+│  │  └─ Translate
+│  ├─ LambdaMuSmoothing
+│  ├─ Repair
+│  ├─ Shadow
+│  ├─ Slice
+│  └─ StdCoords
+├─ Identity
+├─ TableTransform
+│  ├─ Aggregate
+│  ├─ CookieCutter
+│  ├─ Detrend
+│  ├─ Downscale
+│  ├─ FeatureTransform
+│  │  ├─ EigenAnalysis
+│  │  ├─ Remainder
+│  │  ├─ ColwiseFeatureTransform
+│  │  │  ├─ Center
+│  │  │  ├─ Coalesce
+│  │  │  ├─ LowHigh
+│  │  │  ├─ Quantile
+│  │  │  └─ ZScore
+│  │  └─ StatelessFeatureTransform
+│  │     ├─ AbsoluteUnits
+│  │     ├─ Assert
+│  │     ├─ Closure
+│  │     ├─ Coerce
+│  │     ├─ ColTable
+│  │     ├─ Compose
+│  │     ├─ DropConstant
+│  │     ├─ DropExtrema
+│  │     ├─ DropMissing
+│  │     ├─ DropNaN
+│  │     ├─ DropUnits
+│  │     ├─ Filter
+│  │     ├─ Functional
+│  │     ├─ Indicator
+│  │     ├─ Learn
+│  │     ├─ Levels
+│  │     ├─ Map
+│  │     ├─ OneHot
+│  │     ├─ ProjectionPursuit
+│  │     ├─ Reject
+│  │     ├─ Rename
+│  │     ├─ Replace
+│  │     ├─ RowTable
+│  │     ├─ Sample
+│  │     ├─ Satisfies
+│  │     ├─ Select
+│  │     ├─ Sort
+│  │     ├─ StdFeats
+│  │     ├─ StdNames
+│  │     ├─ LogRatio
+│  │     │  ├─ ALR
+│  │     │  ├─ CLR
+│  │     │  └─ ILR
+│  │     ├─ Unit
+│  │     └─ Unitify
+│  ├─ ClusteringTransform
+│  │  ├─ GHC
+│  │  ├─ GSC
+│  │  └─ SLIC
+│  ├─ Interpolate
+│  ├─ InterpolateMissing
+│  ├─ InterpolateNaN
+│  ├─ InterpolateNeighbors
+│  ├─ Potrace
+│  ├─ Rasterize
+│  ├─ Simulate
+│  ├─ ParallelTableTransform
+│  ├─ Transfer
+│  ├─ UniqueCoords
+│  └─ Upscale
+└─ SequentialTransform</code></pre><p>Transforms at the leaves of the tree above should have a docstring with more information on the available options. For example, the documentation of the <a href="#TableTransforms.Select"><code>Select</code></a> transform is shown below:</p><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TableTransforms.Select" href="#TableTransforms.Select"><code>TableTransforms.Select</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Select(col₁, col₂, ..., colₙ)
+Select([col₁, col₂, ..., colₙ])
+Select((col₁, col₂, ..., colₙ))</code></pre><p>The transform that selects columns <code>col₁</code>, <code>col₂</code>, ..., <code>colₙ</code>.</p><pre><code class="nohighlight hljs">Select(col₁ =&gt; newcol₁, col₂ =&gt; newcol₂, ..., colₙ =&gt; newcolₙ)</code></pre><p>Selects the columns <code>col₁</code>, <code>col₂</code>, ..., <code>colₙ</code> and rename them to <code>newcol₁</code>, <code>newcol₂</code>, ..., <code>newcolₙ</code>.</p><pre><code class="nohighlight hljs">Select(regex)</code></pre><p>Selects the columns that match with <code>regex</code>.</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">Select(1, 3, 5)
+Select([:a, :c, :e])
+Select((&quot;a&quot;, &quot;c&quot;, &quot;e&quot;))
+Select(1 =&gt; :x, 3 =&gt; :y)
+Select(:a =&gt; :x, :b =&gt; :y)
+Select(&quot;a&quot; =&gt; &quot;x&quot;, &quot;b&quot; =&gt; &quot;y&quot;)
+Select(r&quot;[ace]&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TableTransforms.jl/blob/v1.33.5/src/transforms/select.jl#L5-L32">source</a></section></article><p>Transforms of type <a href="#TableTransforms.FeatureTransform"><code>FeatureTransform</code></a> operate on the attribute table, whereas transforms of type <a href="#Meshes.GeometricTransform"><code>GeometricTransform</code></a> operate on the underlying geospatial domain:</p><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TableTransforms.FeatureTransform" href="#TableTransforms.FeatureTransform"><code>TableTransforms.FeatureTransform</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">FeatureTransform</code></pre><p>A transform that operates on the columns of the table containing features, i.e., simple attributes such as numbers, strings, etc.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TableTransforms.jl/blob/v1.33.5/src/transforms.jl#L20-L25">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Meshes.GeometricTransform" href="#Meshes.GeometricTransform"><code>Meshes.GeometricTransform</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">GeometricTransform</code></pre><p>A method to transform the geometry (e.g. coordinates) of objects. See <a href="https://en.wikipedia.org/wiki/Geometric_transformation">https://en.wikipedia.org/wiki/Geometric_transformation</a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaGeometry/Meshes.jl/blob/v0.51.9/src/transforms.jl#L5-L11">source</a></section></article><p>Other transforms such as <a href="#Detrend"><code>Detrend</code></a> are defined in terms of both the geospatial domain and the attribute table. All transforms and pipelines implement the following functions:</p><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TransformsBase.isrevertible" href="#TransformsBase.isrevertible"><code>TransformsBase.isrevertible</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">isrevertible(transform)</code></pre><p>Tells whether or not the <code>transform</code> is revertible, i.e. supports a <a href="#TransformsBase.revert"><code>revert</code></a> function. Defaults to <code>false</code> for new transform types.</p><p>Transforms can be revertible and yet don&#39;t be invertible. Invertibility is a mathematical concept, whereas revertibility is a computational concept.</p><p>See also <a href="#TransformsBase.isinvertible"><code>isinvertible</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TransformsBase.jl/blob/v1.6.0/src/interface.jl#L19-L29">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TransformsBase.isinvertible" href="#TransformsBase.isinvertible"><code>TransformsBase.isinvertible</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">isinvertible(transform)</code></pre><p>Tells whether or not the <code>transform</code> is invertible, i.e. whether it implements the <code>inverse</code> function. Defaults to <code>false</code> for new transform types.</p><p>Transforms can be invertible in the mathematical sense, i.e., there exists a one-to-one mapping between input and output spaces.</p><p>See also <a href="#TransformsBase.inverse"><code>inverse</code></a>, <a href="#TransformsBase.isrevertible"><code>isrevertible</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TransformsBase.jl/blob/v1.6.0/src/interface.jl#L32-L43">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TransformsBase.inverse" href="#TransformsBase.inverse"><code>TransformsBase.inverse</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">inverse(transform)</code></pre><p>Returns the inverse transform of the <code>transform</code>.</p><p>See also <a href="#TransformsBase.isinvertible"><code>isinvertible</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TransformsBase.jl/blob/v1.6.0/src/interface.jl#L46-L52">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TransformsBase.apply" href="#TransformsBase.apply"><code>TransformsBase.apply</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">newobject, cache = apply(transform, object)</code></pre><p>Apply <code>transform</code> on the <code>object</code>. Return the <code>newobject</code> and a <code>cache</code> to revert the transform later.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TransformsBase.jl/blob/v1.6.0/src/interface.jl#L79-L84">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TransformsBase.revert" href="#TransformsBase.revert"><code>TransformsBase.revert</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">object = revert(transform, newobject, cache)</code></pre><p>Revert the <code>transform</code> on the <code>newobject</code> using the <code>cache</code> from the corresponding <a href="#TransformsBase.apply"><code>apply</code></a> call and return the original <code>object</code>. Only defined when the <code>transform</code> <a href="#TransformsBase.isrevertible"><code>isrevertible</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TransformsBase.jl/blob/v1.6.0/src/interface.jl#L87-L94">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="TransformsBase.reapply" href="#TransformsBase.reapply"><code>TransformsBase.reapply</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">newobject = reapply(transform, object, cache)</code></pre><p>Reapply the <code>transform</code> to (a possibly different) <code>object</code> using a <code>cache</code> that was created with a previous <a href="#TransformsBase.apply"><code>apply</code></a> call. Fallback to <a href="#TransformsBase.apply"><code>apply</code></a> without using the <code>cache</code>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/TransformsBase.jl/blob/v1.6.0/src/interface.jl#L97-L103">source</a></section></article><h2 id="Feature-transforms"><a class="docs-heading-anchor" href="#Feature-transforms">Feature transforms</a><a id="Feature-transforms-1"></a><a class="docs-heading-anchor-permalink" href="#Feature-transforms" title="Permalink"></a></h2><p>Please check the <a href="https://github.com/JuliaML/TableTransforms.jl">TableTransforms.jl</a> documentation for an updated list of feature transforms. As an example consider the following features over a  Cartesian grid and their statistics:</p><pre><code class="language-julia hljs">using DataFrames
+
+# table of features and domain
+tab = DataFrame(a=rand(1000), b=randn(1000), c=rand(1000))
+dom = CartesianGrid(100, 100)
+
+# georeference table onto domain
+Ω = georef(tab, dom)
+
+# describe features
+describe(values(Ω))</code></pre><div><div style = "float: left;"><span>3×7 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">variable</th><th style = "text-align: left;">mean</th><th style = "text-align: left;">min</th><th style = "text-align: left;">median</th><th style = "text-align: left;">max</th><th style = "text-align: left;">nmissing</th><th style = "text-align: left;">eltype</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Symbol" style = "text-align: left;">Symbol</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "DataType" style = "text-align: left;">DataType</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: left;">a</td><td style = "text-align: right;">0.494939</td><td style = "text-align: right;">0.00106831</td><td style = "text-align: right;">0.487245</td><td style = "text-align: right;">0.999904</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: left;">b</td><td style = "text-align: right;">0.0301239</td><td style = "text-align: right;">-3.0926</td><td style = "text-align: right;">0.0727005</td><td style = "text-align: right;">3.63437</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: left;">c</td><td style = "text-align: right;">0.489363</td><td style = "text-align: right;">0.0015418</td><td style = "text-align: right;">0.490622</td><td style = "text-align: right;">0.998845</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr></tbody></table></div><p>We can create a pipeline that transforms the features to their normal quantile (or scores):</p><pre><code class="language-julia hljs">pipe = Quantile()
+
+Ω̄, cache = apply(pipe, Ω)
+
+describe(values(Ω̄))</code></pre><div><div style = "float: left;"><span>3×7 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">variable</th><th style = "text-align: left;">mean</th><th style = "text-align: left;">min</th><th style = "text-align: left;">median</th><th style = "text-align: left;">max</th><th style = "text-align: left;">nmissing</th><th style = "text-align: left;">eltype</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Symbol" style = "text-align: left;">Symbol</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "DataType" style = "text-align: left;">DataType</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: left;">a</td><td style = "text-align: right;">0.00309023</td><td style = "text-align: right;">-3.09023</td><td style = "text-align: right;">0.00125332</td><td style = "text-align: right;">3.09023</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: left;">b</td><td style = "text-align: right;">0.00309023</td><td style = "text-align: right;">-3.09023</td><td style = "text-align: right;">0.00125332</td><td style = "text-align: right;">3.09023</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: left;">c</td><td style = "text-align: right;">0.00309023</td><td style = "text-align: right;">-3.09023</td><td style = "text-align: right;">0.00125332</td><td style = "text-align: right;">3.09023</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr></tbody></table></div><p>We can then revert the transform given any new geospatial data in the transformed sample space:</p><pre><code class="language-julia hljs">Ωₒ = revert(pipe, Ω̄, cache)
+
+describe(values(Ωₒ))</code></pre><div><div style = "float: left;"><span>3×7 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">variable</th><th style = "text-align: left;">mean</th><th style = "text-align: left;">min</th><th style = "text-align: left;">median</th><th style = "text-align: left;">max</th><th style = "text-align: left;">nmissing</th><th style = "text-align: left;">eltype</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Symbol" style = "text-align: left;">Symbol</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "DataType" style = "text-align: left;">DataType</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: left;">a</td><td style = "text-align: right;">0.495433</td><td style = "text-align: right;">0.00209123</td><td style = "text-align: right;">0.487336</td><td style = "text-align: right;">0.999748</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: left;">b</td><td style = "text-align: right;">0.0329457</td><td style = "text-align: right;">-3.06388</td><td style = "text-align: right;">0.0730489</td><td style = "text-align: right;">3.33348</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: left;">c</td><td style = "text-align: right;">0.489851</td><td style = "text-align: right;">0.00155853</td><td style = "text-align: right;">0.490688</td><td style = "text-align: right;">0.998715</td><td style = "text-align: right;">0</td><td style = "text-align: left;">Float64</td></tr></tbody></table></div><p>The <code>Learn</code> transform is another important transform from <a href="https://github.com/JuliaML/StatsLearnModels.jl">StatsLearnModels.jl</a>:</p><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="StatsLearnModels.Learn" href="#StatsLearnModels.Learn"><code>StatsLearnModels.Learn</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Learn(train, model, incols =&gt; outcols)</code></pre><p>Fits the statistical learning <code>model</code> using the input columns, selected by <code>incols</code>, and the output columns, selected by <code>outcols</code>, from the <code>train</code> table.</p><p>The column selection can be a single column identifier (index or name), a collection of identifiers or a regular expression (regex).</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">Learn(train, model, [1, 2, 3] =&gt; &quot;d&quot;)
+Learn(train, model, [:a, :b, :c] =&gt; :d)
+Learn(train, model, [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;] =&gt; 4)
+Learn(train, model, [1, 2, 3] =&gt; [:d, :e])
+Learn(train, model, r&quot;[abc]&quot; =&gt; [&quot;d&quot;, &quot;e&quot;])</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaML/StatsLearnModels.jl/blob/v0.3.2/src/learn.jl#L5-L23">source</a></section></article><p>For more details, consider watching our JuliaCon2021 talk:</p><p align="center">
+<iframe style="width:560px;height:315px" src="https://www.youtube.com/embed/75A6zyn5pIE" title="Geostatistical Learning" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p><h2 id="Geometric-transforms"><a class="docs-heading-anchor" href="#Geometric-transforms">Geometric transforms</a><a id="Geometric-transforms-1"></a><a class="docs-heading-anchor-permalink" href="#Geometric-transforms" title="Permalink"></a></h2><p>Please check the <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a> documentation for an updated list of geometric transforms. As an example consider the rotation of geospatial data over a Cartesian grid:</p><pre><code class="language-julia hljs"># geospatial domain
+Ω = georef((Z=rand(10, 10),))
+
+# apply geometric transform
+Ωr = Ω |&gt; Rotate(Angle2d(π/4))
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], Ω.geometry, color = Ω.Z)
+viz(fig[1,2], Ωr.geometry, color = Ωr.Z)
+fig</code></pre><img src="79f5db2c.png" alt="Example block output"/><h2 id="Geostatistical-transforms"><a class="docs-heading-anchor" href="#Geostatistical-transforms">Geostatistical transforms</a><a id="Geostatistical-transforms-1"></a><a class="docs-heading-anchor-permalink" href="#Geostatistical-transforms" title="Permalink"></a></h2><p>Bellow is the current list of transforms that operate on both the geometries and features of geospatial data. They are implemented in the <a href="https://github.com/JuliaEarth/GeoStatsBase.jl">GeoStatsBase.jl</a> package.</p><h3 id="UniqueCoords"><a class="docs-heading-anchor" href="#UniqueCoords">UniqueCoords</a><a id="UniqueCoords-1"></a><a class="docs-heading-anchor-permalink" href="#UniqueCoords" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.UniqueCoords" href="#GeoStatsTransforms.UniqueCoords"><code>GeoStatsTransforms.UniqueCoords</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">UniqueCoords(var₁ =&gt; agg₁, var₂ =&gt; agg₂, ..., varₙ =&gt; aggₙ)</code></pre><p>Retain locations in data with unique coordinates.</p><p>Duplicates of a variable <code>varᵢ</code> are aggregated with aggregation function <code>aggᵢ</code>. If an aggregation function  is not defined for variable <code>varᵢ</code>, the default aggregation  function will be used. Default aggregation function is <code>mean</code> for continuous variables and <code>first</code> otherwise.</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">UniqueCoords(1 =&gt; last, 2 =&gt; maximum)
+UniqueCoords(:a =&gt; first, :b =&gt; minimum)
+UniqueCoords(&quot;a&quot; =&gt; last, &quot;b&quot; =&gt; maximum)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/uniquecoords.jl#L5-L23">source</a></section></article><pre><code class="language-julia hljs"># point set with repeated points
+p = rand(Point, 50)
+Ω = georef((Z=rand(100),), [p; p])</code></pre><table>
+  <caption style = "text-align: left;">100×2 GeoTable over 100 PointSet</caption>
+  <thead>
+    <tr class = "header">
+      <th style = "text-align: center;">Z</th>
+      <th style = "text-align: center;">geometry</th>
+    </tr>
+    <tr class = "subheader">
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Point</th>
+    </tr>
+    <tr class = "subheader headerLastRow">
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">🖈 Cartesian{NoDatum}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: center;">0.678673</td>
+      <td style = "text-align: center;">(x: 0.320882 m, y: 0.596951 m, z: 0.0203522 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.609926</td>
+      <td style = "text-align: center;">(x: 0.494479 m, y: 0.939667 m, z: 0.963224 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.635875</td>
+      <td style = "text-align: center;">(x: 0.205951 m, y: 0.0132137 m, z: 0.302964 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.160228</td>
+      <td style = "text-align: center;">(x: 0.0119245 m, y: 0.0109713 m, z: 0.014298 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.0560574</td>
+      <td style = "text-align: center;">(x: 0.504317 m, y: 0.550774 m, z: 0.89253 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.405237</td>
+      <td style = "text-align: center;">(x: 0.0472861 m, y: 0.764894 m, z: 0.445668 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.165545</td>
+      <td style = "text-align: center;">(x: 0.565945 m, y: 0.508873 m, z: 0.6918 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.909176</td>
+      <td style = "text-align: center;">(x: 0.177672 m, y: 0.683169 m, z: 0.282347 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.670355</td>
+      <td style = "text-align: center;">(x: 0.0102869 m, y: 0.173563 m, z: 0.605291 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.0104213</td>
+      <td style = "text-align: center;">(x: 0.215254 m, y: 0.767811 m, z: 0.0856719 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">&vellip;</td>
+      <td style = "text-align: right;">&vellip;</td>
+    </tr>
+  </tbody>
+</table>
+<pre><code class="language-julia hljs"># discard repeated points
+𝒰 = Ω |&gt; UniqueCoords()</code></pre><table>
+  <caption style = "text-align: left;">50×2 GeoTable over 50 view(::PointSet, [1, 2, 3, 4, ..., 47, 48, 49, 50])</caption>
+  <thead>
+    <tr class = "header">
+      <th style = "text-align: center;">Z</th>
+      <th style = "text-align: center;">geometry</th>
+    </tr>
+    <tr class = "subheader">
+      <th style = "text-align: center;">Continuous</th>
+      <th style = "text-align: center;">Point</th>
+    </tr>
+    <tr class = "subheader headerLastRow">
+      <th style = "text-align: center;">[NoUnits]</th>
+      <th style = "text-align: center;">🖈 Cartesian{NoDatum}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: center;">0.754071</td>
+      <td style = "text-align: center;">(x: 0.320882 m, y: 0.596951 m, z: 0.0203522 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.656794</td>
+      <td style = "text-align: center;">(x: 0.494479 m, y: 0.939667 m, z: 0.963224 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.373914</td>
+      <td style = "text-align: center;">(x: 0.205951 m, y: 0.0132137 m, z: 0.302964 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.0820902</td>
+      <td style = "text-align: center;">(x: 0.0119245 m, y: 0.0109713 m, z: 0.014298 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.497616</td>
+      <td style = "text-align: center;">(x: 0.504317 m, y: 0.550774 m, z: 0.89253 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.370414</td>
+      <td style = "text-align: center;">(x: 0.0472861 m, y: 0.764894 m, z: 0.445668 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.433093</td>
+      <td style = "text-align: center;">(x: 0.565945 m, y: 0.508873 m, z: 0.6918 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.533324</td>
+      <td style = "text-align: center;">(x: 0.177672 m, y: 0.683169 m, z: 0.282347 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.406267</td>
+      <td style = "text-align: center;">(x: 0.0102869 m, y: 0.173563 m, z: 0.605291 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">0.249065</td>
+      <td style = "text-align: center;">(x: 0.215254 m, y: 0.767811 m, z: 0.0856719 m)</td>
+    </tr>
+    <tr>
+      <td style = "text-align: right;">&vellip;</td>
+      <td style = "text-align: right;">&vellip;</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Detrend"><a class="docs-heading-anchor" href="#Detrend">Detrend</a><a id="Detrend-1"></a><a class="docs-heading-anchor-permalink" href="#Detrend" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.Detrend" href="#GeoStatsTransforms.Detrend"><code>GeoStatsTransforms.Detrend</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Detrend(col₁, col₂, ..., colₙ; degree=1)
+Detrend([col₁, col₂, ..., colₙ]; degree=1)
+Detrend((col₁, col₂, ..., colₙ); degree=1)</code></pre><p>The transform that detrends columns <code>col₁</code>, <code>col₂</code>, ..., <code>colₙ</code> with a polynomial of given <code>degree</code>.</p><pre><code class="nohighlight hljs">Detrend(regex; degree=1)</code></pre><p>Detrends the columns that match with <code>regex</code>.</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">Detrend(1, 3, 5)
+Detrend([:a, :c, :e])
+Detrend((&quot;a&quot;, &quot;c&quot;, &quot;e&quot;))
+Detrend(r&quot;[ace]&quot;, degree=2)
+Detrend(:)</code></pre><p><strong>References</strong></p><ul><li>Menafoglio, A., Secchi, P. 2013. <a href="https://doi.org/10.1214/13-EJS843">A Universal Kriging predictor for spatially dependent functional data of a Hilbert Space</a></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/detrend.jl#L5-L32">source</a></section></article><pre><code class="language-julia hljs"># quadratic trend + random noise
+r = range(-1, stop=1, length=100)
+μ = [x^2 + y^2 for x in r, y in r]
+ϵ = 0.1rand(100, 100)
+Ω = georef((Z=μ+ϵ,))
+
+# detrend and obtain noise component
+𝒩 = Ω |&gt; Detrend(:Z, degree=2)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], Ω.geometry, color = Ω.Z)
+viz(fig[1,2], 𝒩.geometry, color = 𝒩.Z)
+fig</code></pre><img src="09ac447e.png" alt="Example block output"/><h3 id="Potrace"><a class="docs-heading-anchor" href="#Potrace">Potrace</a><a id="Potrace-1"></a><a class="docs-heading-anchor-permalink" href="#Potrace" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.Potrace" href="#GeoStatsTransforms.Potrace"><code>GeoStatsTransforms.Potrace</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Potrace(mask; [ϵ])
+Potrace(mask, var₁ =&gt; agg₁, ..., varₙ =&gt; aggₙ; [ϵ])</code></pre><p>Trace polygons on 2D image data with Selinger&#39;s Potrace algorithm.</p><p>The categories stored in column <code>mask</code> are converted into binary masks, which are then traced into multi-polygons. When provided, the option <code>ϵ</code> is forwarded to Selinger&#39;s simplification algorithm.</p><p>Duplicates of a variable <code>varᵢ</code> are aggregated with aggregation function <code>aggᵢ</code>. If an aggregation function  is not defined for variable <code>varᵢ</code>, the default aggregation  function will be used. Default aggregation function is <code>mean</code> for continuous variables and <code>first</code> otherwise.</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">Potrace(:mask, ϵ=0.1)
+Potrace(1, 1 =&gt; last, 2 =&gt; maximum)
+Potrace(:mask, :a =&gt; first, :b =&gt; minimum)
+Potrace(&quot;mask&quot;, &quot;a&quot; =&gt; last, &quot;b&quot; =&gt; maximum)</code></pre><p><strong>References</strong></p><ul><li>Selinger, P. 2003. <a href="https://potrace.sourceforge.net/potrace.pdf">Potrace: A polygon-based tracing algorithm</a></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/potrace.jl#L5-L34">source</a></section></article><pre><code class="language-julia hljs"># continuous feature
+Z = [sin(i/10) + sin(j/10) for i in 1:100, j in 1:100]
+
+# binary mask
+M = Z .&gt; 0
+
+# georeference data
+Ω = georef((Z=Z, M=M))
+
+# trace polygons using mask
+𝒯 = Ω |&gt; Potrace(:M)
+
+fig = Mke.Figure(size = (800, 400))
+viz(fig[1,1], Ω.geometry, color = Ω.Z)
+viz(fig[1,2], 𝒯.geometry, color = 𝒯.Z)
+fig</code></pre><img src="67465ef7.png" alt="Example block output"/><pre><code class="language-julia hljs">𝒯.geometry</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">2 GeometrySet
+├─ Multi(4×PolyArea)
+└─ Multi(4×PolyArea)</code></pre><h3 id="Rasterize"><a class="docs-heading-anchor" href="#Rasterize">Rasterize</a><a id="Rasterize-1"></a><a class="docs-heading-anchor-permalink" href="#Rasterize" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.Rasterize" href="#GeoStatsTransforms.Rasterize"><code>GeoStatsTransforms.Rasterize</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Rasterize(grid)
+Rasterize(grid, var₁ =&gt; agg₁, ..., varₙ =&gt; aggₙ)</code></pre><p>Rasterize geometries within specified <code>grid</code>.</p><pre><code class="nohighlight hljs">Rasterize(nx, ny)
+Rasterize(nx, ny, var₁ =&gt; agg₁, ..., varₙ =&gt; aggₙ)</code></pre><p>Alternatively, use the grid with size <code>nx</code> by <code>ny</code> obtained with discretization of the bounding box.</p><p>Duplicates of a variable <code>varᵢ</code> are aggregated with aggregation function <code>aggᵢ</code>. If an aggregation function  is not defined for variable <code>varᵢ</code>, the default aggregation  function will be used. Default aggregation function is <code>mean</code> for continuous variables and <code>first</code> otherwise.</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">grid = CartesianGrid(10, 10)
+Rasterize(grid)
+Rasterize(10, 10)
+Rasterize(grid, 1 =&gt; last, 2 =&gt; maximum)
+Rasterize(10, 10, 1 =&gt; last, 2 =&gt; maximum)
+Rasterize(grid, :a =&gt; first, :b =&gt; minimum)
+Rasterize(10, 10, :a =&gt; first, :b =&gt; minimum)
+Rasterize(grid, &quot;a&quot; =&gt; last, &quot;b&quot; =&gt; maximum)
+Rasterize(10, 10, &quot;a&quot; =&gt; last, &quot;b&quot; =&gt; maximum)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/rasterize.jl#L5-L36">source</a></section></article><pre><code class="language-julia hljs">A = [1, 2, 3, 4, 5]
+B = [1.1, 2.2, 3.3, 4.4, 5.5]
+p1 = PolyArea((2, 0), (6, 2), (2, 2))
+p2 = PolyArea((0, 6), (3, 8), (0, 10))
+p3 = PolyArea((3, 6), (9, 6), (9, 9), (6, 9))
+p4 = PolyArea((7, 0), (10, 0), (10, 4), (7, 4))
+p5 = PolyArea((1, 3), (5, 3), (6, 6), (3, 8), (0, 6))
+gt = georef((; A, B), [p1, p2, p3, p4, p5])
+
+nt = gt |&gt; Rasterize(20, 20)
+
+viz(nt.geometry, color = nt.A)</code></pre><img src="41906f80.png" alt="Example block output"/><h3 id="Clustering"><a class="docs-heading-anchor" href="#Clustering">Clustering</a><a id="Clustering-1"></a><a class="docs-heading-anchor-permalink" href="#Clustering" title="Permalink"></a></h3><p>Unlike traditional clustering algorithms in machine learning, geostatistical clustering (a.k.a. domaining) algorithms consider both the features and the geospatial coordinates of the data.</p><p>Consider the following data as an example:</p><pre><code class="language-julia hljs">Ω = georef((Z=[10sin(i/10) + j for i in 1:4:100, j in 1:4:100],))
+
+viz(Ω.geometry, color = Ω.Z)</code></pre><img src="ea0925ff.png" alt="Example block output"/><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.GHC" href="#GeoStatsTransforms.GHC"><code>GeoStatsTransforms.GHC</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">GHC(k, λ; kern=:epanechnikov, link=:ward, as=:CLUSTER)</code></pre><p>A transform for partitioning geospatial data into <code>k</code> clusters  according to a range <code>λ</code> using Geostatistical Hierarchical Clustering (GHC). The larger the range the more connected are nearby samples.</p><p><strong>Parameters</strong></p><ul><li><code>k</code>    - Approximate number of clusters</li><li><code>λ</code>    - Approximate range of kernel function in length units</li><li><code>kern</code> - Kernel function (<code>:uniform</code>, <code>:triangular</code> or <code>:epanechnikov</code>)</li><li><code>link</code> - Linkage function (<code>:single</code>, <code>:average</code>, <code>:complete</code>, <code>:ward</code> or <code>:ward_presquared</code>)</li><li><code>as</code>   - Cluster column name</li></ul><p><strong>References</strong></p><ul><li>Fouedjio, F. 2016. <a href="https://www.sciencedirect.com/science/article/abs/pii/S2211675316300367">A hierarchical clustering method for multivariate geostatistical data</a></li></ul><p><strong>Notes</strong></p><ul><li>The range parameter controls the sparsity pattern of the pairwise distances, which can greatly affect the computational performance of the GHC algorithm. We recommend choosing a range that is small enough to connect nearby samples. For example, clustering data over a 100x100 Cartesian grid with unit spacing is possible with <code>λ=1.0</code> or <code>λ=2.0</code> but the problem starts to become computationally unfeasible around <code>λ=10.0</code> due to the density of points.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/clustering/ghc.jl#L11-L41">source</a></section></article><pre><code class="language-julia hljs">𝒞 = Ω |&gt; GHC(20, 1.0)
+
+viz(𝒞.geometry, color = 𝒞.CLUSTER)</code></pre><img src="c141b576.png" alt="Example block output"/><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.GSC" href="#GeoStatsTransforms.GSC"><code>GeoStatsTransforms.GSC</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">GSC(k, m; σ=1.0, tol=1e-4, maxiter=10, weights=nothing, as=:CLUSTER)</code></pre><p>A transform for partitioning geospatial data into <code>k</code> clusters using Geostatistical Spectral Clustering (GSC).</p><p><strong>Parameters</strong></p><ul><li><code>k</code>       - Desired number of clusters</li><li><code>m</code>       - Multiplicative factor for adjacent weights</li><li><code>σ</code>       - Standard deviation for exponential model (default to <code>1.0</code>)</li><li><code>tol</code>     - Tolerance of k-means algorithm (default to <code>1e-4</code>)</li><li><code>maxiter</code> - Maximum number of iterations (default to <code>10</code>)</li><li><code>weights</code> - Dictionary with weights for each attribute (default to <code>nothing</code>)</li><li><code>as</code>      - Cluster column name</li></ul><p><strong>References</strong></p><ul><li>Romary et al. 2015. <a href="https://www.sciencedirect.com/science/article/pii/S0098300415001314">Unsupervised classification of multivariate geostatistical data: Two algorithms</a></li></ul><p><strong>Notes</strong></p><ul><li>The algorithm implemented here is slightly different than the algorithm</li></ul><p>described in Romary et al. 2015. Instead of setting Wᵢⱼ = 0 when i &lt;-/-&gt; j, we simply magnify the weight by a multiplicative factor Wᵢⱼ *= m when i &lt;–&gt; j. This leads to dense matrices but also better results in practice.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/clustering/gsc.jl#L5-L33">source</a></section></article><pre><code class="language-julia hljs">𝒞 = Ω |&gt; GSC(50, 2.0)
+
+viz(𝒞.geometry, color = 𝒞.CLUSTER)</code></pre><img src="091f3177.png" alt="Example block output"/><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.SLIC" href="#GeoStatsTransforms.SLIC"><code>GeoStatsTransforms.SLIC</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">SLIC(k, m; tol=1e-4, maxiter=10, weights=nothing, as=:CLUSTER)</code></pre><p>A transform for clustering geospatial data into approximately <code>k</code> clusters using Simple Linear Iterative Clustering (SLIC). The transform produces clusters of samples that are spatially connected based on a distance <code>dₛ</code> and that, at the same time, are similar in terms of <code>vars</code> with distance <code>dᵥ</code>. The tradeoff is controlled with a hyperparameter parameter <code>m</code> in an additive model <code>dₜ = √(dᵥ² + m²(dₛ/s)²)</code>.</p><p><strong>Parameters</strong></p><ul><li><code>k</code>       - Approximate number of clusters</li><li><code>m</code>       - Hyperparameter of SLIC model</li><li><code>tol</code>     - Tolerance of k-means algorithm (default to <code>1e-4</code>)</li><li><code>maxiter</code> - Maximum number of iterations (default to <code>10</code>)</li><li><code>weights</code> - Dictionary with weights for each attribute (default to <code>nothing</code>)</li><li><code>as</code>      - Cluster column name</li></ul><p><strong>References</strong></p><ul><li>Achanta et al. 2011. <a href="https://ieeexplore.ieee.org/document/6205760">SLIC superpixels compared to state-of-the-art superpixel methods</a></li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/clustering/slic.jl#L5-L29">source</a></section></article><pre><code class="language-julia hljs">𝒞 = Ω |&gt; SLIC(50, 0.01)
+
+viz(𝒞.geometry, color = 𝒞.CLUSTER)</code></pre><img src="eff9ec66.png" alt="Example block output"/><h3 id="Interpolate"><a class="docs-heading-anchor" href="#Interpolate">Interpolate</a><a id="Interpolate-1"></a><a class="docs-heading-anchor-permalink" href="#Interpolate" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.Interpolate" href="#GeoStatsTransforms.Interpolate"><code>GeoStatsTransforms.Interpolate</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Interpolate(domain, vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])
+Interpolate([g₁, g₂, ..., gₙ], vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])</code></pre><p>Interpolate geospatial data on given <code>domain</code> or vector of geometries <code>[g₁, g₂, ..., gₙ]</code>, using geostatistical models <code>model₁</code>, ..., <code>modelₙ</code> for variables <code>vars₁</code>, ..., <code>varsₙ</code>.</p><pre><code class="nohighlight hljs">Interpolate(domain, model=NN(); [parameters])
+Interpolate([g₁, g₂, ..., gₙ], model=NN(); [parameters])</code></pre><p>Interpolate geospatial data on given <code>domain</code> or vector of geometries <code>[g₁, g₂, ..., gₙ]</code>, using geostatistical <code>model</code> for all variables.</p><p><strong>Parameters</strong></p><ul><li><code>point</code> - Perform interpolation on point support (default to <code>true</code>)</li><li><code>prob</code>  - Perform probabilistic interpolation (default to <code>false</code>)</li></ul><p>See also <a href="#GeoStatsTransforms.InterpolateNeighbors"><code>InterpolateNeighbors</code></a>, <a href="#GeoStatsTransforms.InterpolateMissing"><code>InterpolateMissing</code></a>, <a href="#GeoStatsTransforms.InterpolateNaN"><code>InterpolateNaN</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/interpolate.jl#L5-L24">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.InterpolateNeighbors" href="#GeoStatsTransforms.InterpolateNeighbors"><code>GeoStatsTransforms.InterpolateNeighbors</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">InterpolateNeighbors(domain, vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])
+InterpolateNeighbors([g₁, g₂, ..., gₙ], vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])</code></pre><p>Interpolate geospatial data on given <code>domain</code> or set of geometries <code>g₁</code>, <code>g₂</code>, ..., <code>gₙ</code>, using geostatistical models <code>model₁</code>, ..., <code>modelₙ</code> for variables <code>vars₁</code>, ..., <code>varsₙ</code>.</p><pre><code class="nohighlight hljs">InterpolateNeighbors(domain, model=NN(); [parameters])
+InterpolateNeighbors([g₁, g₂, ..., gₙ], model=NN(); [parameters])</code></pre><p>Interpolate geospatial data on given <code>domain</code> or set of geometries <code>g₁</code>, <code>g₂</code>, ..., <code>gₙ</code>, using geostatistical <code>model</code> for all variables.</p><p>Unlike <a href="#Interpolate"><code>Interpolate</code></a>, this transform uses neighbor search methods to fit geostatistical models at each interpolation location with a reduced number of measurements.</p><p><strong>Parameters</strong></p><ul><li><code>minneighbors</code> - Minimum number of neighbors (default to <code>1</code>)</li><li><code>maxneighbors</code> - Maximum number of neighbors (default to <code>10</code>)</li><li><code>neighborhood</code> - Search neighborhood (default to <code>nothing</code>)</li><li><code>distance</code>     - A distance defined in Distances.jl (default to <code>Euclidean()</code>)</li><li><code>point</code>        - Perform interpolation on point support (default to <code>true</code>)</li><li><code>prob</code>         - Perform probabilistic interpolation (default to <code>false</code>)</li></ul><p>The <code>maxneighbors</code> parameter can be used to perform interpolation with a subset of measurements per prediction location. If <code>maxneighbors</code> is not provided, then all measurements are used.</p><p>Two <code>neighborhood</code> search methods are available:</p><ul><li><p>If a <code>neighborhood</code> is provided, local prediction is performed  by sliding the <code>neighborhood</code> in the domain.</p></li><li><p>If a <code>neighborhood</code> is not provided, the prediction is performed  using <code>maxneighbors</code> nearest neighbors according to <code>distance</code>.</p></li></ul><p>See also <a href="#Interpolate"><code>Interpolate</code></a>, <a href="#GeoStatsTransforms.InterpolateMissing"><code>InterpolateMissing</code></a>, <a href="#GeoStatsTransforms.InterpolateNaN"><code>InterpolateNaN</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/interpneighbors.jl#L5-L44">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.InterpolateMissing" href="#GeoStatsTransforms.InterpolateMissing"><code>GeoStatsTransforms.InterpolateMissing</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">InterpolateMissing(vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])
+InterpolateMissing(vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])</code></pre><p>Interpolate geospatial data on its own domain, using geostatistical models <code>model₁</code>, ..., <code>modelₙ</code>  and non-missing values of the variables <code>vars₁</code>, ..., <code>varsₙ</code>.</p><pre><code class="nohighlight hljs">InterpolateMissing(model=NN(); [parameters])
+InterpolateMissing(model=NN(); [parameters])</code></pre><p>Interpolate geospatial data on its own domain, using geostatistical <code>model</code> and non-missing values of all variables.</p><p>Just like <a href="#GeoStatsTransforms.InterpolateNeighbors"><code>InterpolateNeighbors</code></a>, this transform uses neighbor search methods to fit geostatistical models at each interpolation location with a reduced number of measurements.</p><p><strong>Parameters</strong></p><ul><li><code>minneighbors</code> - Minimum number of neighbors (default to <code>1</code>)</li><li><code>maxneighbors</code> - Maximum number of neighbors (default to <code>10</code>)</li><li><code>neighborhood</code> - Search neighborhood (default to <code>nothing</code>)</li><li><code>distance</code>     - A distance defined in Distances.jl (default to <code>Euclidean()</code>)</li><li><code>point</code>        - Perform interpolation on point support (default to <code>true</code>)</li><li><code>prob</code>         - Perform probabilistic interpolation (default to <code>false</code>)</li></ul><p>The <code>maxneighbors</code> parameter can be used to perform interpolation with a subset of measurements per prediction location. If <code>maxneighbors</code> is not provided, then all measurements are used.</p><p>Two <code>neighborhood</code> search methods are available:</p><ul><li><p>If a <code>neighborhood</code> is provided, local prediction is performed  by sliding the <code>neighborhood</code> in the domain.</p></li><li><p>If a <code>neighborhood</code> is not provided, the prediction is performed  using <code>maxneighbors</code> nearest neighbors according to <code>distance</code>.</p></li></ul><p>See also <a href="#GeoStatsTransforms.InterpolateNaN"><code>InterpolateNaN</code></a>, <a href="#GeoStatsTransforms.InterpolateNeighbors"><code>InterpolateNeighbors</code></a>, <a href="#Interpolate"><code>Interpolate</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/interpmissing.jl#L5-L43">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.InterpolateNaN" href="#GeoStatsTransforms.InterpolateNaN"><code>GeoStatsTransforms.InterpolateNaN</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">InterpolateNaN(vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])
+InterpolateNaN(vars₁ =&gt; model₁, ..., varsₙ =&gt; modelₙ; [parameters])</code></pre><p>Interpolate geospatial data on its own domain, using geostatistical models <code>model₁</code>, ..., <code>modelₙ</code>  and non-NaN values of the variables <code>vars₁</code>, ..., <code>varsₙ</code>.</p><pre><code class="nohighlight hljs">InterpolateNaN(model=NN(); [parameters])
+InterpolateNaN(model=NN(); [parameters])</code></pre><p>Interpolate geospatial data on its own domain, using geostatistical <code>model</code> and non-NaN values of all variables.</p><p>Just like <a href="#GeoStatsTransforms.InterpolateNeighbors"><code>InterpolateNeighbors</code></a>, this transform uses neighbor search methods to fit geostatistical models at each interpolation location with a reduced number of measurements.</p><p><strong>Parameters</strong></p><ul><li><code>minneighbors</code> - Minimum number of neighbors (default to <code>1</code>)</li><li><code>maxneighbors</code> - Maximum number of neighbors (default to <code>10</code>)</li><li><code>neighborhood</code> - Search neighborhood (default to <code>nothing</code>)</li><li><code>distance</code>     - A distance defined in Distances.jl (default to <code>Euclidean()</code>)</li><li><code>point</code>        - Perform interpolation on point support (default to <code>true</code>)</li><li><code>prob</code>         - Perform probabilistic interpolation (default to <code>false</code>)</li></ul><p>The <code>maxneighbors</code> parameter can be used to perform interpolation with a subset of measurements per prediction location. If <code>maxneighbors</code> is not provided, then all measurements are used.</p><p>Two <code>neighborhood</code> search methods are available:</p><ul><li><p>If a <code>neighborhood</code> is provided, local prediction is performed  by sliding the <code>neighborhood</code> in the domain.</p></li><li><p>If a <code>neighborhood</code> is not provided, the prediction is performed  using <code>maxneighbors</code> nearest neighbors according to <code>distance</code>.</p></li></ul><p>See also <a href="#GeoStatsTransforms.InterpolateMissing"><code>InterpolateMissing</code></a>, <a href="#GeoStatsTransforms.InterpolateNeighbors"><code>InterpolateNeighbors</code></a>, <a href="#Interpolate"><code>Interpolate</code></a>.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/interpnan.jl#L5-L43">source</a></section></article><pre><code class="language-julia hljs">table = (; Z=[1.,0.,1.])
+coord = [(25.,25.), (50.,75.), (75.,50.)]
+geotable = georef(table, coord)
+
+grid = CartesianGrid(100, 100)
+
+model = Kriging(GaussianVariogram(range=35.))
+
+interp = geotable |&gt; Interpolate(grid, model)
+
+viz(interp.geometry, color = interp.Z)</code></pre><img src="6e4ebb43.png" alt="Example block output"/><h3 id="Simulate"><a class="docs-heading-anchor" href="#Simulate">Simulate</a><a id="Simulate-1"></a><a class="docs-heading-anchor-permalink" href="#Simulate" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.Simulate" href="#GeoStatsTransforms.Simulate"><code>GeoStatsTransforms.Simulate</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Simulate(domain, vars₁ =&gt; process₁, ..., varsₙ =&gt; processₙ; [parameters])
+Simulate(domain, nreals, vars₁ =&gt; process₁, ..., varsₙ =&gt; processₙ; [parameters])
+Simulate([g₁, g₂, ..., gₙ], vars₁ =&gt; process₁, ..., varsₙ =&gt; processₙ; [parameters])
+Simulate([g₁, g₂, ..., gₙ], nreals, vars₁ =&gt; process₁, ..., varsₙ =&gt; processₙ; [parameters])</code></pre><p>Simulate <code>nreals</code> realizations of variables <code>varsᵢ</code> with geostatistical process <code>processᵢ</code> over given <code>domain</code> or vector of geometries <code>[g₁, g₂, ..., gₙ]</code>.</p><p>The <code>parameters</code> are forwarded to the <code>rand</code> method of the geostatistical processes.</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/simulate.jl#L5-L15">source</a></section></article><h3 id="CookieCutter"><a class="docs-heading-anchor" href="#CookieCutter">CookieCutter</a><a id="CookieCutter-1"></a><a class="docs-heading-anchor-permalink" href="#CookieCutter" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="GeoStatsTransforms.CookieCutter" href="#GeoStatsTransforms.CookieCutter"><code>GeoStatsTransforms.CookieCutter</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">CookieCutter(domain, parent =&gt; process, var₁ =&gt; procmap₁, ..., varₙ =&gt; procmapₙ; [parameters])
+CookieCutter(domain, nreals, parent =&gt; process, var₁ =&gt; procmap₁, ..., varₙ =&gt; procmapₙ; [parameters])</code></pre><p>Simulate <code>nreals</code> realizations of variable <code>parent</code> with geostatistical process <code>process</code>,  and each child variable <code>varsᵢ</code> with process map <code>procmapᵢ</code>, over given <code>domain</code>.</p><p>The process map must be an iterable of pairs of the form: value =&gt; process. Each process in the map is related to a value of the <code>parent</code> realization,  therefore the values of the child variables will be chosen according to the values of the corresponding <code>parent</code> realization.</p><p>The <code>parameters</code> are forwarded to the <code>rand</code> method of the geostatistical processes.</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">parent = QuiltingProcess(trainimg, (30, 30))
+child0 = GaussianProcess(SphericalVariogram(range=20.0, sill=0.2))
+child1 = GaussianProcess(SphericalVariogram(MetricBall((200.0, 20.0))))
+transform = CookieCutter(domain, :parent =&gt; parent, :child =&gt; [0 =&gt; child0, 1 =&gt; child1])</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaEarth/GeoStatsTransforms.jl/blob/v0.8.1/src/cookiecutter.jl#L5-L27">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../domains/">« Domains</a><a class="docs-footer-nextpage" href="../queries/">Queries »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.7.0 on <span class="colophon-date" title="Thursday 19 September 2024 11:32">Thursday 19 September 2024</span>. Using Julia version 1.10.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
