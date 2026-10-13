@@ -10,10 +10,10 @@ zone = GeoIO.load(&quot;data/zone.gpkg&quot;)</code></pre><table>
       <td colspan = "4" style = "font-size: 14px; text-align: center;">4×4 GeoTable over 4 GeometrySet</td>
     </tr>
     <tr class = "columnLabelRow">
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">zone</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">area</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">perimeter</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #008080">geometry</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">zone</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">area</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">perimeter</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #008080; font-weight: bold;">geometry</span></th>
     </tr>
     <tr class = "columnLabelRow">
       <th style = "text-align: center;">Categorical</th>
@@ -68,8 +68,8 @@ zone = GeoIO.load(&quot;data/zone.gpkg&quot;)</code></pre><table>
       <td colspan = "2" style = "font-size: 14px; text-align: center;">2500×2 GeoTable over 50×50 CartesianGrid</td>
     </tr>
     <tr class = "columnLabelRow">
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">z</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #008080">geometry</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">z</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #008080; font-weight: bold;">geometry</span></th>
     </tr>
     <tr class = "columnLabelRow">
       <th style = "text-align: center;">Continuous</th>
@@ -126,7 +126,7 @@ zone = GeoIO.load(&quot;data/zone.gpkg&quot;)</code></pre><table>
       <td style = "text-align: center;">&vellip;</td>
     </tr>
   </tbody>
-</table><p>Default coordinates are assigned based on the size of the array, and different configurations can be obtained with different methods (see <a href="../data/">Data</a>).</p><p>Geospatial data can be visualized with the <a href="../visualization/#Meshes.viz"><code>viz</code></a> recipe function:</p><pre><code class="language-julia hljs">viz(Ω.geometry, color = Ω.z)</code></pre><img src="2367dddf.png" alt="Example block output"/><p>Alternatively, we provide a basic scientific <a href="../visualization/#GeoTables.viewer"><code>viewer</code></a> to visualize all viewable variables in the data with a colorbar and other interactive elements (see <a href="../visualization/">Visualization</a>):</p><pre><code class="language-julia hljs">viewer(Ω)</code></pre><img src="4a263e08.png" alt="Example block output"/><div class="admonition is-info" id="Note-315517fc4a6bbba2"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-315517fc4a6bbba2" title="Permalink"></a></header><div class="admonition-body"><p>Julia supports unicode symbols with <span>$\LaTeX$</span> syntax. We can type <code>\Omega</code> and press <code>TAB</code> to get the symbol <code>Ω</code> in the example above. This autocompletion works in various text editors, including the <a href="https://code.visualstudio.com/docs/languages/julia">VSCode</a> editor with the Julia extension.</p></div></div><h2 id="Manipulating-data"><a class="docs-heading-anchor" href="#Manipulating-data">Manipulating data</a><a id="Manipulating-data-1"></a><a class="docs-heading-anchor-permalink" href="#Manipulating-data" title="Permalink"></a></h2><h3 id="Table-interface"><a class="docs-heading-anchor" href="#Table-interface">Table interface</a><a id="Table-interface-1"></a><a class="docs-heading-anchor-permalink" href="#Table-interface" title="Permalink"></a></h3><p>Our geospatial data implements the <a href="https://github.com/JuliaData/Tables.jl">Tables.jl</a> interface, which means that they can be accessed as if they were tables with samples in the rows and variables in the columns. In this case, a special column named <code>geometry</code> is created on the fly, row by row, containing <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a> geometries.</p><p>For those familiar with the productive <a href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> interface, there is nothing new:</p><pre><code class="language-julia hljs">Ω[1,:]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">(z = 2.9983341664682817, geometry = Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m)))</code></pre><pre><code class="language-julia hljs">Ω[1,&quot;geometry&quot;]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Quadrangle
+</table><p>Default coordinates are assigned based on the size of the array, and different configurations can be obtained with different methods (see <a href="../data/">Data</a>).</p><p>Geospatial data can be visualized with the <a href="../visualization/#Meshes.viz"><code>viz</code></a> recipe function:</p><pre><code class="language-julia hljs">viz(Ω.geometry, color = Ω.z)</code></pre><img src="ebb4d046.png" alt="Example block output"/><p>Alternatively, we provide a basic scientific <a href="../visualization/#GeoTables.viewer"><code>viewer</code></a> to visualize all viewable variables in the data with a colorbar and other interactive elements (see <a href="../visualization/">Visualization</a>):</p><pre><code class="language-julia hljs">viewer(Ω)</code></pre><img src="dedf3b68.png" alt="Example block output"/><div class="admonition is-info" id="Note-315517fc4a6bbba2"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-315517fc4a6bbba2" title="Permalink"></a></header><div class="admonition-body"><p>Julia supports unicode symbols with <span>$\LaTeX$</span> syntax. We can type <code>\Omega</code> and press <code>TAB</code> to get the symbol <code>Ω</code> in the example above. This autocompletion works in various text editors, including the <a href="https://code.visualstudio.com/docs/languages/julia">VSCode</a> editor with the Julia extension.</p></div></div><h2 id="Manipulating-data"><a class="docs-heading-anchor" href="#Manipulating-data">Manipulating data</a><a id="Manipulating-data-1"></a><a class="docs-heading-anchor-permalink" href="#Manipulating-data" title="Permalink"></a></h2><h3 id="Table-interface"><a class="docs-heading-anchor" href="#Table-interface">Table interface</a><a id="Table-interface-1"></a><a class="docs-heading-anchor-permalink" href="#Table-interface" title="Permalink"></a></h3><p>Our geospatial data implements the <a href="https://github.com/JuliaData/Tables.jl">Tables.jl</a> interface, which means that they can be accessed as if they were tables with samples in the rows and variables in the columns. In this case, a special column named <code>geometry</code> is created on the fly, row by row, containing <a href="https://github.com/JuliaGeometry/Meshes.jl">Meshes.jl</a> geometries.</p><p>For those familiar with the productive <a href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> interface, there is nothing new:</p><pre><code class="language-julia hljs">Ω[1,:]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">(z = 2.9983341664682817, geometry = Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m)))</code></pre><pre><code class="language-julia hljs">Ω[1,&quot;geometry&quot;]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Quadrangle
 ├─ Point(x: 0.0 m, y: 0.0 m)
 ├─ Point(x: 1.0 m, y: 0.0 m)
 ├─ Point(x: 1.0 m, y: 1.0 m)
@@ -166,7 +166,7 @@ pipe = Quantile() → StdCoords()
 fig = Mke.Figure(size = (800, 400))
 Mke.hist(fig[1,1], Ω.z, color = :gray)
 Mke.hist(fig[2,1], Ω̂.z, color = :gray)
-fig</code></pre><img src="3772ed60.png" alt="Example block output"/><p>Coordinates before pipeline:</p><pre><code class="language-julia hljs">boundingbox(Ω.geometry)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Box
+fig</code></pre><img src="2070eee8.png" alt="Example block output"/><p>Coordinates before pipeline:</p><pre><code class="language-julia hljs">boundingbox(Ω.geometry)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Box
 ├─ min: Point(x: 0.0 m, y: 0.0 m)
 └─ max: Point(x: 50.0 m, y: 50.0 m)</code></pre><p>and after pipeline:</p><pre><code class="language-julia hljs">boundingbox(Ω̂.geometry)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Box
 ├─ min: Point(x: -0.5 m, y: -0.5 m)
@@ -182,9 +182,9 @@ fig</code></pre><img src="3772ed60.png" alt="Example block output"/><p>Coordinat
       <td colspan = "3" style = "font-size: 14px; text-align: center;">2500×3 GeoTable over 50×50 CartesianGrid</td>
     </tr>
     <tr class = "columnLabelRow">
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">z</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">w</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #008080">geometry</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">z</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">w</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #008080; font-weight: bold;">geometry</span></th>
     </tr>
     <tr class = "columnLabelRow">
       <th style = "text-align: center;">Continuous</th>
@@ -288,12 +288,12 @@ root:                     nothing</code></pre><p>We will fit the model in Ωs wh
       <td colspan = "6" style = "font-size: 14px; text-align: center;">14961×6 GeoTable over 14961 view(::PointSet, [8, 24, 25, 27, ..., 74985, 74988, 74989, 74991])</td>
     </tr>
     <tr class = "columnLabelRow">
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">band1</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">band2</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">band3</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">band4</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #ff7e70">crop</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #008080">geometry</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">band1</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">band2</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">band3</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">band4</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #ff7e70; font-weight: bold;">crop</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #008080; font-weight: bold;">geometry</span></th>
     </tr>
     <tr class = "columnLabelRow">
       <th style = "text-align: center;">Categorical</th>
@@ -424,8 +424,8 @@ root:                     nothing</code></pre><p>The transform can be called wit
       <td colspan = "2" style = "font-size: 14px; text-align: center;">60039×2 GeoTable over 60039 view(::PointSet, [1, 2, 3, 4, ..., 74997, 74998, 74999, 75000])</td>
     </tr>
     <tr class = "columnLabelRow">
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #98aa7a">crop</span></th>
-      <th style = "font-weight: bold; text-align: center;"><span style="font-weight: 700; color: #008080">geometry</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #98aa7a; font-weight: bold;">crop</span></th>
+      <th style = "font-weight: bold; text-align: center;"><span style = "color: #008080; font-weight: bold;">geometry</span></th>
     </tr>
     <tr class = "columnLabelRow">
       <th style = "text-align: center;">Categorical</th>
@@ -485,4 +485,4 @@ root:                     nothing</code></pre><p>The transform can be called wit
 </table><h2 id="Scientific-visualization"><a class="docs-heading-anchor" href="#Scientific-visualization">Scientific visualization</a><a id="Scientific-visualization-1"></a><a class="docs-heading-anchor-permalink" href="#Scientific-visualization" title="Permalink"></a></h2><p>We note that the prediction of a geostatistical learning model is a geospatial data object, and we can inspect it with the same methods already described above. This also means that we can visualize the prediction directly, side by side with the true label in this synthetic example:</p><pre><code class="language-julia hljs">fig = Mke.Figure(size = (800, 400))
 viz(fig[1,1], Ω̂t.geometry, color = Ω̂t.crop)
 viz(fig[1,2], Ωt.geometry, color = Ωt.crop)
-fig</code></pre><img src="3f7f201c.png" alt="Example block output"/><p>With this example we conclude the basic workflow. To get familiar with other features of the project, please check the the reference guide.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../data/">Data »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.19.0 on <span class="colophon-date" title="Sunday 27 September 2026 20:01">Sunday 27 September 2026</span>. Using Julia version 1.13.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+fig</code></pre><img src="3f7f201c.png" alt="Example block output"/><p>With this example we conclude the basic workflow. To get familiar with other features of the project, please check the the reference guide.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../data/">Data »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.19.0 on <span class="colophon-date" title="Tuesday 13 October 2026 11:41">Tuesday 13 October 2026</span>. Using Julia version 1.13.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
